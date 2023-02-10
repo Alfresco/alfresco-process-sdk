@@ -1,0 +1,65 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  # allows triggering workflow manually or from other jobs
+  workflow_dispatch:
+
+env:
+  MAVEN_CLI_OPTS: >-
+    --settings settings.xml
+    -fae -U
+    -Ddoclint=none
+    -DaltReleaseDeploymentRepository=alfresco-public::default::https://artifacts.alfresco.com/nexus/content/repositories/releases
+    -DaltSnapshotDeploymentRepository=alfresco-public-snapshots::default::https://artifacts.alfresco.com/nexus/content/repositories/snapshots
+    -Denvironment.host=${{ vars.ENVIRONMENT_HOST }}
+    -Denvironment.apa.host=${{ vars.ENVIRONMENT_APA_HOST }}
+    -Denvironment.application.name=${{ vars.ENVIRONMENT_APP }}
+
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@v1.27.0
+
+  build:
+    runs-on: ubuntu-latest
+    needs:
+      - pre-commit
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - run: |
+          mvn verify $MAVEN_CLI_OPTS -Dlogging.root.level=off -Dspring.main.banner-mode=off
+
+      #- run: |
+      #    mvn deploy $MAVEN_CLI_OPTS -DskipTests
+
+
+#  notify:
+#    runs-on: ubuntu-latest
+#    needs:
+#      - promote
+#    if: always() && failure() && github.event_name == 'push'
+#    steps:
+#      - name: Slack Notification
+#        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@v1.27.0
+#        with:
+#          channel-id: 'eng-hxp-studio-be-gh-notifs'
+#          token: ${{ secrets.SLACK_NOTIFICATION_BOT_TOKEN }}

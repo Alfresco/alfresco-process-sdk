@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.5.12</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>org.alfresco</groupId>
+  <artifactId>alfresco-java-sdk-samples</artifactId>
+  <version>5.2.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Alfresco :: Java SDK :: Samples</name>
+  <description>Sample application of the Java SDK</description>
+
+  <modules>
+    <module>java-rest-api-clients</module>
+  </modules>
+</project>
