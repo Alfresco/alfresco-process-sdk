@@ -15,7 +15,7 @@
   <name>Alfresco :: Process SDK :: Parent</name>
   <description>Parent for Alfresco Process SDK</description>
   <url>https://github.com/Alfresco/${project.scm.repository}</url>
-  <inceptionYear>${project.year}</inceptionYear>
+  <inceptionYear>2021</inceptionYear>
   <organization>
     <name>Alfresco Software, Ltd</name>
     <url>https://www.alfresco.com</url>
@@ -83,7 +83,7 @@
 <properties>
     <project.scm.organisation>Alfresco</project.scm.organisation>
     <project.scm.repository>alfresco-process-sdk</project.scm.repository>
-    <project.year>2020</project.year>
+    <project.year>2023</project.year>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.release>11</java.release>
     <java.version>1.${java.release}</java.version>
