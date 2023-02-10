@@ -12,7 +12,7 @@
 
   <artifactId>alfresco-apa-java-rest-api-lib</artifactId>
 
-  <name>Alfresco Java REST API</name>
+  <name>Alfresco Process REST API</name>
   <description>${project.name}</description>
   <packaging>pom</packaging>
   <developers/>
