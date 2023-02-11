@@ -150,5 +150,3 @@ services:
 volumes:
   rabbitmq-data:
   pgdata:
-
-

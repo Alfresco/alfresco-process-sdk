@@ -51,14 +51,14 @@ Then, add the dependency on the APA starter
 ```xml
 
 <dependencies>
-  
+
   <!-- APA Java REST APIs -->
   <dependency>
     <groupId>org.alfresco</groupId>
     <artifactId>alfresco-apa-java-rest-api-spring-boot-starter</artifactId>
     <version>{version-number}</version>
   </dependency>
-  
+
 </dependencies>
 ```
 

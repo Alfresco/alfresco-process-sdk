@@ -27,4 +27,3 @@ import org.springframework.context.annotation.Import;
 public @interface EnableAuthConfiguration {
 
 }
-

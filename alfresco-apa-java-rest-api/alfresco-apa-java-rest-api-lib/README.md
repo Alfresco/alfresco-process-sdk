@@ -78,7 +78,7 @@ mvn clean install
         - patterns:
           - /admin/*
       ssl-required: ${ACT_KEYCLOAK_SSL_REQUIRED:none}
-    
+
     activiti:
       service:
           query:
@@ -102,17 +102,17 @@ mvn clean install
           process-storage:
             url: https://gateway.aaedev.envalfresco.com
             path: /process-storage
-    
+
     authentication:
       service:
         url: ${AUTHENTICATION_RUNTIME_URL:http://example.com}
         path: ${AUTHENTICATION_PATH:/alfresco/api/-default-/public/alfresco/versions/1}
-    
+
     process:
       service:
         url: ${PROCESS_SERVICE_URL:http://example.com}
         path: ${PROCESS_SERVICE_PATH:/alfresco/api/-default-/public/alfresco/versions/1}
-    
+
     ```
 
 ## How to start in a non spring application

@@ -1,14 +1,14 @@
 # Alfresco Process Java SDK - Sample app
 
-Sample application to demonstrate REST API usage within a sample application, 
+Sample application to demonstrate REST API usage within a sample application,
 making use of [Alfresco Process Java REST API Spring Boot Starter](../../alfresco-apa-java-rest-api)
 to interact with APA.
 
-The sample app will run ***automatically*** against the set up APA environment, 
+The sample app will run ***automatically*** against the set up APA environment,
 executing a simple APA interaction flow and logging its different steps,
 as a live example of the minimal configuration needed to achieve it.
 
-By tailing the logs of the sample application container, 
+By tailing the logs of the sample application container,
 we will be able to see the effect of the API interactions in action, in real time every 10 seconds:
 
 ```
@@ -58,7 +58,7 @@ docker-compose version 1.27.4, build 40524192
 
 ### Build and run
 
-This sample project local development environment is based on Docker, so a ```run.sh``` utility script has been included in order to build, run or stop 
+This sample project local development environment is based on Docker, so a ```run.sh``` utility script has been included in order to build, run or stop
 easily. This script will require to change the environment variable ```DOCKER_IP``` to your Docker host IP in the provided ```.env``` file
 
 
@@ -68,7 +68,7 @@ See [```run.sh```](run.sh)  if you would like to know how each function exactly 
 
 Build all and run:
 
-Before running the sample make sure that you build the whole project from the root level 
+Before running the sample make sure that you build the whole project from the root level
 to make sure the sample app has the latest code from its dependencies above in the project
 
 ```bash
