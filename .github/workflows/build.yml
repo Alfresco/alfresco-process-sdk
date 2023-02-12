@@ -47,7 +47,7 @@ jobs:
           cache: 'maven'
 
       - run: |
-          mvn verify $MAVEN_CLI_OPTS
+          mvn verify $MAVEN_CLI_OPTS -Dlogging.level.root=off
 
       #- run: |
       #    mvn deploy $MAVEN_CLI_OPTS -DskipTests
