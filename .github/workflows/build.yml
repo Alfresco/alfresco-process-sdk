@@ -59,7 +59,7 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     needs:
-      - promote
+      - build
     if: always() && failure() && github.event_name == 'push'
     steps:
       - name: Slack Notification
