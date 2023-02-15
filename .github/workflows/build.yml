@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 env:
-  NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-  NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+  MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+  MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
   MAVEN_CLI_OPTS: >-
     --settings settings.xml
     -fae -U -B -V
