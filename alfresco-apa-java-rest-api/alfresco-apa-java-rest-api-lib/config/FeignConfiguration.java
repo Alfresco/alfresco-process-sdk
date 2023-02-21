@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.alfresco.process.configuration;
 
 
@@ -64,13 +65,15 @@ public class FeignConfiguration {
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addSerializer(OffsetDateTime.class, new JsonSerializer<OffsetDateTime>() {
             @Override
-            public void serialize(OffsetDateTime offsetDateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
+            public void serialize(OffsetDateTime offsetDateTime, JsonGenerator jsonGenerator,
+                                  SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
                 jsonGenerator.writeString(offsetDateTime.toString());
             }
         });
         simpleModule.addDeserializer(OffsetDateTime.class, new JsonDeserializer<OffsetDateTime>() {
             @Override
-            public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+            public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+                throws IOException, JsonProcessingException {
 
                 DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                         .append(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
