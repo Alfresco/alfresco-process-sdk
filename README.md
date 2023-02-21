@@ -221,6 +221,8 @@ Here are some settings you may need to configure in your Application configurati
       </dependencies>
     ```
 
+To see how classes within the SDK can be used to call APIs, refer to [this example](samples/java-rest-api-clients/src/main/java/org/alfresco/java/rest/client/sample/service/RESTClientService.java)
+
 ### Usage in a non-spring application
 
 You can check the documentation here:
