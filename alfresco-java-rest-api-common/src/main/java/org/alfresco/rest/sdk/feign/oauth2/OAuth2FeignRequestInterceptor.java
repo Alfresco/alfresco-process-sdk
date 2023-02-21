@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.alfresco.rest.sdk.feign.oauth2;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
