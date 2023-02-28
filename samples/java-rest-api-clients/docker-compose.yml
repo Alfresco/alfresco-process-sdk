@@ -45,7 +45,8 @@ services:
       - 15672:15672
       - 61613:61613
     volumes:
-      - rabbitmq-data
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq/
     restart: unless-stopped
 
   keycloak:
@@ -74,9 +75,9 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://${DOCKER_IP}/rb/actuator/health"]
-      interval: 30s
+      interval: 60s
       timeout: 10s
-      retries: 5
+      retries: 10
     depends_on:
       - nginx
       - keycloak
@@ -148,5 +149,4 @@ services:
       SERVER_SERVLET_CONTEXT_PATH:  /modeling-service
 
 volumes:
-  rabbitmq-data:
   pgdata:

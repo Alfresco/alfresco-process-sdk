@@ -229,17 +229,47 @@ process:
     ```
 
 - Copy the class in the folder config/FeignConfiguration.java in your project
+  In order to resolve the references in FeignConfiguration you will need the following `<dependencies>`
 
-- If you are using keycloak you should include also the following libs:
+  ```xml
+  <dependencies>
+    <dependency>
+        <groupId>org.activiti.cloud</groupId>
+        <artifactId>activiti-cloud-api-process-model-impl</artifactId>
+        <version>version-here</version>
+    </dependency>
+    <dependency>
+        <groupId>org.activiti.cloud</groupId>
+        <artifactId>activiti-cloud-api-task-model-impl</artifactId>
+        <version>version-here</version>
+    </dependency>
+    <dependency>
+        <groupId>org.activiti</groupId>
+        <artifactId>activiti-api-runtime-shared</artifactId>
+        <version>version-here</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+    </dependency>
+  </dependencies>
+  ```
+
+- If you are using keycloak you must include also the following:
     ```xml
       <dependencies>
         <dependency>
           <groupId>org.activiti.cloud</groupId>
           <artifactId>activiti-cloud-services-common-security</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>org.activiti.api</groupId>
-          <artifactId>activiti-api-runtime-shared</artifactId>
+          <version>version-here</version>
         </dependency>
       </dependencies>
     ```

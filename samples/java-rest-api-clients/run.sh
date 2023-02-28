@@ -7,11 +7,11 @@ else
 fi
 
 start() {
-    docker-compose up --build -d
+    docker compose up --build -d
 }
 
 down() {
-    docker-compose down
+    docker compose down
 }
 
 build() {
@@ -20,16 +20,16 @@ build() {
 }
 
 tail() {
-    docker-compose logs -f
+    docker compose logs -f
 }
 
 start_sample() {
-    docker-compose up --build -d java-rest-api-clients
+    docker compose up --build -d java-rest-api-clients
 }
 
 stop_sample() {
-    docker-compose kill java-rest-api-clients
-    yes | docker-compose rm -f java-rest-api-clients
+    docker compose kill java-rest-api-clients
+    yes | docker compose rm -f java-rest-api-clients
 }
 
 case "$1" in
