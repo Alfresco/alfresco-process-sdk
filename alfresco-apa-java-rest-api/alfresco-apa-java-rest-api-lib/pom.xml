@@ -344,12 +344,6 @@
                   <goal>format</goal>
                 </goals>
               </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>com.mycila</groupId>
-            <artifactId>license-maven-plugin</artifactId>
-            <executions>
               <execution>
                 <id>validate-license</id>
                 <phase>process-sources</phase>

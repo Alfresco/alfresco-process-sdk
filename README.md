@@ -336,3 +336,52 @@ Running on GitHub requires the following environment variables to be set:
 |----------------|------------------------------------|
 | MAVEN_USERNAME | Internal Maven repository username |
 | MAVEN_PASSWORD | Internal Maven repository password |
+
+## License Management
+
+Modules in this repo use the following Maven plugins to perform licensing related tasks:
+
+- [com.mycila:license-maven-plugin](https://mycila.carbou.me/license-maven-plugin/) is used for checking and updating the license header on all applicable files. This is typically done at the beginning of a new year.
+- [org.codehaus.mojo:license-maven-plugin](https://www.mojohaus.org/license-maven-plugin/) is used to manage third party licenses. Specifically generating a report of all licenses used by dependencies.
+
+Since these plugins have the same name (excluding the groupId), running them requires qualifiying the goal with the full name.
+
+### Updating the license header
+
+To check that the license header is consistent across all source files, run this command:
+
+`mvn com.mycila:license-maven-plugin:check`
+
+If any source files have a modified or missing license header, this goal will fail.
+
+To fix the license header on all source files, run this command:
+
+`mvn com.mycila:license-maven-plugin:format`
+
+Any files that did not have the correct header will be reformatted and appear in your unstaged changes.
+
+You can use this command to update the license header when the Copyright year should be updated. Before running the format goal, modify [pom.xml](pom.xml) with the current year:
+
+```xml
+<properties>
+    <project.year>year-here</project.year>
+</properties>
+```
+
+See the [plugin documentation](https://mycila.carbou.me/license-maven-plugin/) for all possible goals.
+
+### Listing Third Party Licenses
+
+To list all third party licenses across all modules, the following command can be used:
+
+``mvn org.codehaus.mojo:license-maven-plugin:aggregate-third-party-report``
+
+This will create a file located at `.\target\site\aggregate-third-party-report.html`, which contains a list of the licenses for all dependencies for all modules.
+
+Additionally, per-module text-based reports can be created with this command:
+
+`mvn org.codehaus.mojo:license-maven-plugin:add-third-party`
+
+For each module a file will be created at `target\generated-sources\license\THIRD-PARTY.txt`
+
+See the [plugin documentation](https://www.mojohaus.org/license-maven-plugin/) for all possible goals.
