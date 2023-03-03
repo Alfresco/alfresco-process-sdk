@@ -94,40 +94,63 @@ compile "org.alfresco:alfresco-apa-java-rest-api-spring-boot-starter:{version-nu
 
 #### 3. Configure Authentication for the REST API
 
-In your ```application.properties``` file provide URL, authentication mechanism and credentials for accessing the REST API:
+In your ```application.yml``` file you can configure settings related to the content service repository, authentication mechanism, and credentials for accessing the REST API:
 
-```
-content.service.url=http://repository:8080
-content.service.security.basicAuth.username=admin
-content.service.security.basicAuth.password=admin
+```yaml
+content:
+  service:
+    url: https://repository:8080
+    security:
+      basicAuth:
+        username: username-here
+        password: password-here
 ```
 
 If you are using OAuth2, you can use client-credential based authentication:
 
-```
-spring.security.oauth2.client.registration.alfresco-rest-api.provider=alfresco-identity-service
-spring.security.oauth2.client.registration.alfresco-rest-api.client-id=clientId
-spring.security.oauth2.client.registration.alfresco-rest-api.client-secret=clientSecret
-spring.security.oauth2.client.registration.alfresco-rest-api.authorization-grant-type=client_credentials
-spring.security.oauth2.client.provider.alfresco-identity-service.token-uri=${keycloak.auth-server-url}/auth/realms/${keycloak.realm}/protocol/openid-connect/token
+```yaml
+spring
+  security:
+    oauth2:
+      client:
+        registration:
+          alfresco-rest-api:
+            provider: alfresco-identity-service
+            client-id: clientId
+            client-secret: clientSecret
+            authorization-grant-type: client_credentials
+        provider:
+          alfresco-identity-service:
+            token-uri: ${keycloak.auth-server-url}/auth/realms/${keycloak.realm}/protocol/openid-connect/token
 ```
 
 Or OAuth2 password based authentication:
 
-```
-spring.security.oauth2.client.registration.alfresco-rest-api.provider=alfresco-identity-service
-spring.security.oauth2.client.registration.alfresco-rest-api.client-id=clientId
-spring.security.oauth2.client.registration.alfresco-rest-api.client-secret=clientSecret
-spring.security.oauth2.client.registration.alfresco-rest-api.username=username
-spring.security.oauth2.client.registration.alfresco-rest-api.password=pwd
-spring.security.oauth2.client.registration.alfresco-rest-api.authorization-grant-type=password
-spring.security.oauth2.client.provider.alfresco-identity-service.token-uri=${keycloak.auth-server-url}/auth/realms/${keycloak.realm}/protocol/openid-connect/token
+```yaml
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          alfresco-rest-api:
+            provider: alfresco-identity-service
+            client-id: clientId
+            client-secret: clientSecret
+            username: username-here
+            password: password-here
+            authorization-grant-type: password
+        provider:
+          alfresco-identity-service:
+            token-uri: ${keycloak.auth-server-url}/auth/realms/${keycloak.realm}/protocol/openid-connect/token
 ```
 
 Additionally, if you want to provide a custom authentication mechanism, you can enable the delegated external authentication:
 
-```
-content.service.security.delegated=true
+```yaml
+content:
+  service:
+    security:
+      delegated: true
 ```
 
 And provide a bean that implements the interface ```DelegatedAuthenticationProvider```.
@@ -137,58 +160,58 @@ And provide a bean that implements the interface ```DelegatedAuthenticationProvi
 Here are some settings you may need to configure in your Application configuration file before using the SDK
 
 ```yaml
-    keycloak:
-      auth-server-url: http://example.com/auth}
-      principal-attribute: ${ACT_KEYCLOAK_PRINCIPAL_ATTRIBUTE:preferred-username}
-      public-client: ${ACT_KEYCLOAK_CLIENT:true}
-      realm: ${ACT_KEYCLOAK_REALM:springboot}
-      resource: ${ACT_KEYCLOAK_RESOURCE:activiti}
-      security-constraints:
-      - authRoles:
-        - ${ACT_KEYCLOAK_ROLES:user}
-        securityCollections:
-        - patterns:
-          - ${ACT_KEYCLOAK_PATTERNS:/v1/*}
-      - authRoles:
-        - ${admin-role-name}
-        securityCollections:
-        - patterns:
-          - /admin/*
-      ssl-required: ${ACT_KEYCLOAK_SSL_REQUIRED:none}
+keycloak:
+  auth-server-url: http://example.com/auth}
+  principal-attribute: ${ACT_KEYCLOAK_PRINCIPAL_ATTRIBUTE:preferred-username}
+  public-client: ${ACT_KEYCLOAK_CLIENT:true}
+  realm: ${ACT_KEYCLOAK_REALM:springboot}
+  resource: ${ACT_KEYCLOAK_RESOURCE:activiti}
+  security-constraints:
+  - authRoles:
+    - ${ACT_KEYCLOAK_ROLES:user}
+    securityCollections:
+    - patterns:
+      - ${ACT_KEYCLOAK_PATTERNS:/v1/*}
+  - authRoles:
+    - ${admin-role-name}
+    securityCollections:
+    - patterns:
+      - /admin/*
+  ssl-required: ${ACT_KEYCLOAK_SSL_REQUIRED:none}
 
-    activiti:
-      service:
-          query:
-            url:  https://gateway.aaedev.envalfresco.com
-            path: /example-app/query
-          runtime:
-            url: https://gateway.aaedev.envalfresco.com
-            path: /example-app/rb
-          form:
-            url: https://gateway.aaedev.envalfresco.com
-            path: /example-app/form
-          audit:
-            url: https://gateway.aaedev.envalfresco.com
-            path: /example-app/audit
-          deployment:
-            url: https://gateway.aaedev.envalfresco.com
-            path:  /deployment-service
-          modeling:
-            url: https://gateway.aaedev.envalfresco.com
-            path: /modeling-service
-          process-storage:
-            url: https://gateway.aaedev.envalfresco.com
-            path: /process-storage
+activiti:
+  service:
+      query:
+        url: https://example.com
+        path: /example-app/query
+      runtime:
+        url: https://example.com
+        path: /example-app/rb
+      form:
+        url: https://example.com
+        path: /example-app/form
+      audit:
+        url: https://example.com
+        path: /example-app/audit
+      deployment:
+        url: https://example.com
+        path:  /deployment-service
+      modeling:
+        url: https://example.com
+        path: /modeling-service
+      process-storage:
+        url: https://example.com
+        path: /process-storage
 
-    authentication:
-      service:
-        url: ${AUTHENTICATION_RUNTIME_URL:http://example.com}
-        path: ${AUTHENTICATION_PATH:/alfresco/api/-default-/public/alfresco/versions/1}
+authentication:
+  service:
+    url: ${AUTHENTICATION_RUNTIME_URL:http://example.com}
+    path: ${AUTHENTICATION_PATH:/alfresco/api/-default-/public/alfresco/versions/1}
 
-    process:
-      service:
-        url: ${PROCESS_SERVICE_URL:http://example.com}
-        path: ${PROCESS_SERVICE_PATH:/alfresco/api/-default-/public/alfresco/versions/1}
+process:
+  service:
+    url: ${PROCESS_SERVICE_URL:http://example.com}
+    path: ${PROCESS_SERVICE_PATH:/alfresco/api/-default-/public/alfresco/versions/1}
 
 ```
 
@@ -206,17 +229,47 @@ Here are some settings you may need to configure in your Application configurati
     ```
 
 - Copy the class in the folder config/FeignConfiguration.java in your project
+  In order to resolve the references in FeignConfiguration you will need the following `<dependencies>`
 
-- If you are using keycloak you should include also the following libs:
+  ```xml
+  <dependencies>
+    <dependency>
+        <groupId>org.activiti.cloud</groupId>
+        <artifactId>activiti-cloud-api-process-model-impl</artifactId>
+        <version>version-here</version>
+    </dependency>
+    <dependency>
+        <groupId>org.activiti.cloud</groupId>
+        <artifactId>activiti-cloud-api-task-model-impl</artifactId>
+        <version>version-here</version>
+    </dependency>
+    <dependency>
+        <groupId>org.activiti</groupId>
+        <artifactId>activiti-api-runtime-shared</artifactId>
+        <version>version-here</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+    </dependency>
+  </dependencies>
+  ```
+
+- If you are using keycloak you must include also the following:
     ```xml
       <dependencies>
         <dependency>
           <groupId>org.activiti.cloud</groupId>
           <artifactId>activiti-cloud-services-common-security</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>org.activiti.api</groupId>
-          <artifactId>activiti-api-runtime-shared</artifactId>
+          <version>version-here</version>
         </dependency>
       </dependencies>
     ```
