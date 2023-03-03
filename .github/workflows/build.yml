@@ -59,7 +59,7 @@ jobs:
         run: |
           mvn verify $MAVEN_CLI_OPTS -Dlogging.level.root=off
       - name: Deploy
-        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.shouldDeploy == true)
+        if: github.event_name == 'push' || (github.ref_name == 'main' && github.event.inputs.shouldDeploy == true)
         run: |
           mvn deploy $MAVEN_CLI_OPTS -DskipTests
 
