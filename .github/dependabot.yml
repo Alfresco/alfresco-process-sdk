@@ -4,8 +4,21 @@
 # https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+registries:
+  maven-alfresco-internal:
+    type: maven-repository
+    url: https://artifacts.alfresco.com/nexus/content/groups/internal
+    username: ${{secrets.NEXUS_USERNAME}}
+    password: ${{secrets.NEXUS_PASSWORD}}
 updates:
-  - package-ecosystem: "maven" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/"
+    registries:
+      - maven-alfresco-internal
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
       interval: "daily"
