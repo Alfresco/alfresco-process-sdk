@@ -12,9 +12,13 @@ repos:
       - id: check-yaml
         args: [--allow-multiple-documents]
       - id: check-json
-        exclude: ^.*(invalid|not_a_json).*\.json$
       - id: check-xml
-        exclude: ^.*invalid.*\.xml$
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.0-alpha.6
+    hooks:
+      - id: prettier
+        types_or:
+          - markdown
   - repo: https://github.com/sirosen/check-jsonschema
     rev: 0.21.0
     hooks:
