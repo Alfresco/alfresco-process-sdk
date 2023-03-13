@@ -22,11 +22,10 @@ env:
   MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
   MAVEN_CLI_OPTS: >-
     --settings settings.xml
-    -fae -U -B -V
+    -fae -U -V
+    --no-transfer-progress
     -Dspring.main.banner-mode=off
     -Ddoclint=none
-    -DaltReleaseDeploymentRepository=alfresco-public::default::https://artifacts.alfresco.com/nexus/content/repositories/releases
-    -DaltSnapshotDeploymentRepository=alfresco-public-snapshots::default::https://artifacts.alfresco.com/nexus/content/repositories/snapshots
     -Denvironment.host=${{ vars.ENVIRONMENT_HOST }}
     -Denvironment.apa.host=${{ vars.ENVIRONMENT_APA_HOST }}
     -Denvironment.application.name=${{ vars.ENVIRONMENT_APP }}
@@ -55,13 +54,20 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build and Test
+      - name: Define Maven Command
+        id: define_maven_command
+        shell: bash
         run: |
-          mvn verify $MAVEN_CLI_OPTS -Dlogging.level.root=off
-      - name: Deploy
-        if: github.event_name == 'push' || (github.ref_name == 'main' && github.event.inputs.shouldDeploy == true)
+          if [[ ${{ github.event_name }} == 'push' || ( ${{ github.ref_name }} == 'main' && ${{ github.event.inputs.shouldDeploy }} == true ) ]]
+          then
+            echo "command=deploy" >> $GITHUB_OUTPUT
+          else
+            echo "command=verify" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build, Test and sometimes deploy
         run: |
-          mvn deploy $MAVEN_CLI_OPTS -DskipTests
+          mvn ${{ steps.define_maven_command.outputs.command }} $MAVEN_CLI_OPTS
 
   notify:
     runs-on: ubuntu-latest
