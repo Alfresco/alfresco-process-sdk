@@ -4,7 +4,7 @@ Sample application to demonstrate REST API usage within a sample application,
 making use of [Alfresco Process Java REST API Spring Boot Starter](../../alfresco-apa-java-rest-api)
 to interact with APA.
 
-The sample app will run ***automatically*** against the set up APA environment,
+The sample app will run **_automatically_** against the set up APA environment,
 executing a simple APA interaction flow and logging its different steps,
 as a live example of the minimal configuration needed to achieve it.
 
@@ -26,7 +26,8 @@ INFO 1 --- [   scheduling-1] o.a.j.r.c.s.service.RESTClientService    : This a l
 
 To properly build and run the project in a local environment it is required to have installed some tools.
 
-* Java 11:
+- Java 11:
+
 ```bash
 $ java -version
 
@@ -35,21 +36,24 @@ OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
 OpenJDK 64-Bit Server VM 18.9 (build 11.0.1+13, mixed mode)
 ```
 
-* [Maven](https://maven.apache.org/install.html) version 3.3 or higher:
+- [Maven](https://maven.apache.org/install.html) version 3.3 or higher:
+
 ```bash
 $ mvn -version
 
 Apache Maven 3.6.1 (d66c9c0b3152b2e69ee9bac180bb8fcc8e6af555; 2019-04-04T21:00:29+02:00)
 ```
 
-* [Docker](https://docs.docker.com/install/) version 1.12 or higher:
+- [Docker](https://docs.docker.com/install/) version 1.12 or higher:
+
 ```bash
 $ docker -v
 
 Docker version 20.10.2, build 2291f61
 ```
 
-* [Docker compose](https://docs.docker.com/compose/install/):
+- [Docker compose](https://docs.docker.com/compose/install/):
+
 ```bash
 $ docker-compose -v
 
@@ -58,11 +62,10 @@ docker-compose version 1.27.4, build 40524192
 
 ### Build and run
 
-This sample project local development environment is based on Docker, so a ```run.sh``` utility script has been included in order to build, run or stop
-easily. This script will require to change the environment variable ```DOCKER_IP``` to your Docker host IP in the provided ```.env``` file
+This sample project local development environment is based on Docker, so a `run.sh` utility script has been included in order to build, run or stop
+easily. This script will require to change the environment variable `DOCKER_IP` to your Docker host IP in the provided `.env` file
 
-
-See [```run.sh```](run.sh)  if you would like to know how each function exactly works.
+See [`run.sh`](run.sh) if you would like to know how each function exactly works.
 
 #### How To Run
 
@@ -97,7 +100,7 @@ $ ./run.sh stop
 
 #### How To Reload the Sample App
 
-If you want to rebuild and redeploy *only* the sample app:
+If you want to rebuild and redeploy _only_ the sample app:
 
 ```bash
 $ ./run.sh reload_sample

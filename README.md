@@ -1,15 +1,13 @@
-![Build Status](https://github.com/Alfresco/alfresco-process-sdk/actions/workflows/build.yml/badge.svg)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/335dc8e0ffc54eada8d4ac674131b666)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Alfresco/alfresco-process-sdk&amp;utm_campaign=Badge_Grade)
-
 # Welcome to the Alfresco Process SDK
 
-<p>
-  <img title="alfresco" alt='alfresco' src='docs/images/alfresco.png'/>
-</p>
+![Build Status](https://github.com/Alfresco/alfresco-process-sdk/actions/workflows/build.yml/badge.svg)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/335dc8e0ffc54eada8d4ac674131b666)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=Alfresco/alfresco-process-sdk&utm_campaign=Badge_Grade)
+
+![alfreso logo](./docs/images/alfresco.png)
 
 ## What is Alfresco Process SDK?
 
-The Alfresco Process SDK includes APIs and samples that allows developers to quickly build Java applications that integrate with APA. <br/>
+The Alfresco Process SDK includes APIs and samples that allows developers to quickly build Java applications that integrate with APA.
 
 This SDK provides functionality to connect to Cloud-based servers. APA version 7.x and above are supported.
 
@@ -20,7 +18,7 @@ The APIs contained within have been generated using [Swagger Codegen](https://sw
 The Alfresco Process SDK consists of these parts:
 
 - The main API ([alfresco-apa-java-rest-api](alfresco-apa-java-rest-api)) allows applications to consume APA public REST APIs.
-- The [samples](samples) folder includes a sample application configured to use the SDK. This has a `docker-compose` file and scripts that allows you to build and run the application.  See [README](samples/java-rest-api-clients/README.md) for more details.
+- The [samples](samples) folder includes a sample application configured to use the SDK. This has a `docker-compose` file and scripts that allows you to build and run the application. See [README](samples/java-rest-api-clients/README.md) for more details.
 - [Common logic](alfresco-java-rest-api-common) for REST APIs (primarily for authentication)
 
 ## Getting Started
@@ -35,14 +33,14 @@ This section contains the steps required for using the SDK with Spring.
 
 #### Pre-Requisites
 
-* Java version 11 or higher
-* Maven version 3.3 or higher
+- Java version 11 or higher
+- Maven version 3.3 or higher
 
 #### 1. Create a new Spring Boot application
 
-#### 2. Add these dependencies to your project's build file:
+#### 2. Add these dependencies to your project's build file
 
-**Maven**
+##### Maven
 
 First, add to the repositories the Alfresco public repository containing the artifacts:
 
@@ -74,7 +72,7 @@ Then, add the dependency on the APA starter
 </dependencies>
 ```
 
-**Gradle**
+##### Gradle
 
 First, add to the repositories the Alfresco public repository containing the artifacts:
 
@@ -94,7 +92,7 @@ compile "org.alfresco:alfresco-apa-java-rest-api-spring-boot-starter:{version-nu
 
 #### 3. Configure Authentication for the REST API
 
-In your ```application.yml``` file you can configure settings related to the content service repository, authentication mechanism, and credentials for accessing the REST API:
+In your `application.yml` file you can configure settings related to the content service repository, authentication mechanism, and credentials for accessing the REST API:
 
 ```yaml
 content:
@@ -153,7 +151,7 @@ content:
       delegated: true
 ```
 
-And provide a bean that implements the interface ```DelegatedAuthenticationProvider```.
+And provide a bean that implements the interface `DelegatedAuthenticationProvider`.
 
 #### 4. Configure Other Settings
 
@@ -167,41 +165,41 @@ keycloak:
   realm: ${ACT_KEYCLOAK_REALM:springboot}
   resource: ${ACT_KEYCLOAK_RESOURCE:activiti}
   security-constraints:
-  - authRoles:
-    - ${ACT_KEYCLOAK_ROLES:user}
-    securityCollections:
-    - patterns:
-      - ${ACT_KEYCLOAK_PATTERNS:/v1/*}
-  - authRoles:
-    - ${admin-role-name}
-    securityCollections:
-    - patterns:
-      - /admin/*
+    - authRoles:
+        - ${ACT_KEYCLOAK_ROLES:user}
+      securityCollections:
+        - patterns:
+            - ${ACT_KEYCLOAK_PATTERNS:/v1/*}
+    - authRoles:
+        - ${admin-role-name}
+      securityCollections:
+        - patterns:
+            - /admin/*
   ssl-required: ${ACT_KEYCLOAK_SSL_REQUIRED:none}
 
 activiti:
   service:
-      query:
-        url: https://example.com
-        path: /example-app/query
-      runtime:
-        url: https://example.com
-        path: /example-app/rb
-      form:
-        url: https://example.com
-        path: /example-app/form
-      audit:
-        url: https://example.com
-        path: /example-app/audit
-      deployment:
-        url: https://example.com
-        path:  /deployment-service
-      modeling:
-        url: https://example.com
-        path: /modeling-service
-      process-storage:
-        url: https://example.com
-        path: /process-storage
+    query:
+      url: https://example.com
+      path: /example-app/query
+    runtime:
+      url: https://example.com
+      path: /example-app/rb
+    form:
+      url: https://example.com
+      path: /example-app/form
+    audit:
+      url: https://example.com
+      path: /example-app/audit
+    deployment:
+      url: https://example.com
+      path: /deployment-service
+    modeling:
+      url: https://example.com
+      path: /modeling-service
+    process-storage:
+      url: https://example.com
+      path: /process-storage
 
 authentication:
   service:
@@ -212,21 +210,20 @@ process:
   service:
     url: ${PROCESS_SERVICE_URL:http://example.com}
     path: ${PROCESS_SERVICE_PATH:/alfresco/api/-default-/public/alfresco/versions/1}
-
 ```
 
 #### 4. Consume the REST API
 
 - Add to your main Spring application
 
-    ```java
-    @EnableFeignClients(basePackages = {"com.alfresco.core.handler",
-                                        "com.alfresco.activiti.handler",
-                                        "com.alfresco.search.handler",
-                                        "com.alfresco.auth.handler"})
+  ```java
+  @EnableFeignClients(basePackages = {"com.alfresco.core.handler",
+                                      "com.alfresco.activiti.handler",
+                                      "com.alfresco.search.handler",
+                                      "com.alfresco.auth.handler"})
   public class SampleApplication { }
 
-    ```
+  ```
 
 - Copy the class in the folder config/FeignConfiguration.java in your project
   In order to resolve the references in FeignConfiguration you will need the following `<dependencies>`
@@ -264,15 +261,16 @@ process:
   ```
 
 - If you are using keycloak you must include also the following:
-    ```xml
-      <dependencies>
-        <dependency>
-          <groupId>org.activiti.cloud</groupId>
-          <artifactId>activiti-cloud-services-common-security</artifactId>
-          <version>version-here</version>
-        </dependency>
-      </dependencies>
-    ```
+
+  ```xml
+    <dependencies>
+      <dependency>
+        <groupId>org.activiti.cloud</groupId>
+        <artifactId>activiti-cloud-services-common-security</artifactId>
+        <version>version-here</version>
+      </dependency>
+    </dependencies>
+  ```
 
 To see how classes within the SDK can be used to call APIs, refer to [this example](samples/java-rest-api-clients/src/main/java/org/alfresco/java/rest/client/sample/service/RESTClientService.java)
 
@@ -282,6 +280,7 @@ You can check the documentation here:
 <https://github.com/OpenFeign/feign>
 
 ## Building the SDK
+
 It is not necessary to build the SDK in order to use it. You can instead reference the released version of the sdk
 by following the instructions [above](#getting-started).
 
@@ -289,9 +288,9 @@ If you still intend to build it, follow these instructions:
 
 ### Pre-Requisites
 
-* Java version 11 or higher
-* Maven version 3.3 or higher
-* An APA environment with a deployed application from which to fetch the API definitions
+- Java version 11 or higher
+- Maven version 3.3 or higher
+- An APA environment with a deployed application from which to fetch the API definitions
 
 ### Build Steps
 
@@ -327,15 +326,6 @@ mvn clean install -Dskip.generation
 
 However, you must build the project at least once _without_ skipping the generation step in order to compile the SDK. From that point, you
 can skip the generation step if unneeded.
-
-## CI/CD
-
-Running on GitHub requires the following environment variables to be set:
-
-| Name           | Description                        |
-|----------------|------------------------------------|
-| MAVEN_USERNAME | Internal Maven repository username |
-| MAVEN_PASSWORD | Internal Maven repository password |
 
 ## License Management
 
@@ -374,7 +364,7 @@ See the [plugin documentation](https://mycila.carbou.me/license-maven-plugin/) f
 
 To list all third party licenses across all modules, the following command can be used:
 
-``mvn org.codehaus.mojo:license-maven-plugin:aggregate-third-party-report``
+`mvn org.codehaus.mojo:license-maven-plugin:aggregate-third-party-report`
 
 This will create a file located at `.\target\site\aggregate-third-party-report.html`, which contains a list of the licenses for all dependencies for all modules.
 
@@ -385,3 +375,27 @@ Additionally, per-module text-based reports can be created with this command:
 For each module a file will be created at `target\generated-sources\license\THIRD-PARTY.txt`
 
 See the [plugin documentation](https://www.mojohaus.org/license-maven-plugin/) for all possible goals.
+
+## CI/CD
+
+Running on GitHub Actions requires the following variables to be set:
+
+| Name                 | Description                                                      |
+| -------------------- | ---------------------------------------------------------------- |
+| ENVIRONMENT_APA_HOST | URL of APA environment to use for SDK generation                 |
+| ENVIRONMENT_APP      | Name of the app within the environment to use for SDK generation |
+| ENVIRONMENT_HOST     | Base URL of environment to use for SDK generation                |
+
+The following secrets are required:
+| Name | Description
+|----------------|------------------------------------|
+| NEXUS_USERNAME | Internal Maven repository username |
+| NEXUS_PASSWORD | Internal Maven repository password |
+| SLACK_NOTIFICATION_BOT_TOKEN | Slack token for failures |
+
+Dependabot requires:
+| Name | Description
+|----------------|------------------------------------|
+| NEXUS_USERNAME | Internal Maven repository username |
+| NEXUS_PASSWORD | Internal Maven repository password |
+| DEPENDABOT_GITHUB_TOKEN | Token for automated dependabot PRs |
