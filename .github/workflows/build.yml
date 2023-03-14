@@ -16,14 +16,12 @@ on:
         default: false
         required: false
 
-
 env:
   MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
   MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
   MAVEN_CLI_OPTS: >-
     --settings settings.xml
-    -fae -U -V --no-transfer-progress -Dspring.main.banner-mode=off -Ddoclint=none
-    -DdeployAtEnd=true
+    -V --no-transfer-progress -Dspring.main.banner-mode=off -Ddoclint=none
     -Denvironment.host=${{ vars.ENVIRONMENT_HOST }}
     -Denvironment.apa.host=${{ vars.ENVIRONMENT_APA_HOST }}
     -Denvironment.application.name=${{ vars.ENVIRONMENT_APP }}

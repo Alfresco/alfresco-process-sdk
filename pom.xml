@@ -199,6 +199,14 @@ limitations under the License.]]>
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <configuration>
+            <updateReleaseInfo>true</updateReleaseInfo>
+            <deployAtEnd>true</deployAtEnd>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
