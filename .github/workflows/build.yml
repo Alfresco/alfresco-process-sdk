@@ -16,21 +16,15 @@ on:
         default: false
         required: false
 
-
 env:
   MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
   MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
   MAVEN_CLI_OPTS: >-
     --settings settings.xml
-    -fae -U -B -V
-    -Dspring.main.banner-mode=off
-    -Ddoclint=none
-    -DaltReleaseDeploymentRepository=alfresco-public::default::https://artifacts.alfresco.com/nexus/content/repositories/releases
-    -DaltSnapshotDeploymentRepository=alfresco-public-snapshots::default::https://artifacts.alfresco.com/nexus/content/repositories/snapshots
+    -V --no-transfer-progress -Dspring.main.banner-mode=off -Ddoclint=none
     -Denvironment.host=${{ vars.ENVIRONMENT_HOST }}
     -Denvironment.apa.host=${{ vars.ENVIRONMENT_APA_HOST }}
     -Denvironment.application.name=${{ vars.ENVIRONMENT_APP }}
-
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name || github.run_id }}
@@ -48,20 +42,34 @@ jobs:
       - pre-commit
     steps:
       - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
-          cache: 'maven'
 
-      - name: Build and Test
+      - name: Define Maven Command
+        id: define_maven_command
+        shell: bash
         run: |
-          mvn verify $MAVEN_CLI_OPTS -Dlogging.level.root=off
-      - name: Deploy
-        if: github.event_name == 'push' || (github.ref_name == 'main' && github.event.inputs.shouldDeploy == true)
+          if [[ ${{ github.event_name }} == 'push' || ( ${{ github.ref_name }} == 'main' && '${{ inputs.shouldDeploy }}' == 'true' ) ]]
+          then
+            echo "command=deploy" >> $GITHUB_OUTPUT
+          else
+            echo "command=verify" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build, Test and sometimes deploy
         run: |
-          mvn deploy $MAVEN_CLI_OPTS -DskipTests
+          mvn ${{ steps.define_maven_command.outputs.command }} $MAVEN_CLI_OPTS
 
   notify:
     runs-on: ubuntu-latest
