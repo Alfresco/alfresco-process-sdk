@@ -107,7 +107,7 @@ content:
 If you are using OAuth2, you can use client-credential based authentication:
 
 ```yaml
-spring
+spring:
   security:
     oauth2:
       client:
