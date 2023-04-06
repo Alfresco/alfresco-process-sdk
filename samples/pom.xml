@@ -5,15 +5,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.9</version>
-    <relativePath/>
+    <groupId>org.alfresco</groupId>
+    <artifactId>alfresco-process-sdk</artifactId>
+    <version>${revision}</version>
   </parent>
 
   <groupId>org.alfresco</groupId>
   <artifactId>alfresco-process-sdk-samples</artifactId>
-  <version>7.10.0-SNAPSHOT</version>
+  <version>${revision}</version>
   <packaging>pom</packaging>
   <name>Alfresco :: Process SDK :: Samples</name>
   <description>Sample application using the Process SDK</description>
