@@ -10,7 +10,7 @@
   </parent>
   <groupId>org.alfresco</groupId>
   <artifactId>alfresco-process-sdk</artifactId>
-  <version>7.10.0-SNAPSHOT</version>
+  <version>${revision}</version>
   <packaging>pom</packaging>
   <name>Alfresco :: Process SDK :: Parent</name>
   <description>Parent for Alfresco Process SDK</description>
@@ -81,6 +81,7 @@
   </distributionManagement>
 
 <properties>
+    <revision>7.10.0-SNAPSHOT</revision>
     <project.scm.organisation>Alfresco</project.scm.organisation>
     <project.scm.repository>alfresco-process-sdk</project.scm.repository>
     <project.year>2023</project.year>
@@ -207,6 +208,11 @@ limitations under the License.]]>
             <deployAtEnd>true</deployAtEnd>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>flatten-maven-plugin</artifactId>
+          <version>1.4.1</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -226,7 +232,31 @@ limitations under the License.]]>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>license-maven-plugin</artifactId>
-       </plugin>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <configuration>
+        </configuration>
+        <executions>
+          <!-- enable flattening -->
+          <execution>
+            <id>flatten</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+          <!-- ensure proper cleanup -->
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>

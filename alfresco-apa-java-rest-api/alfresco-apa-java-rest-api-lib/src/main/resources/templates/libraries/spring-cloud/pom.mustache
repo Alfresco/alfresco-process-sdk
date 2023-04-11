@@ -5,12 +5,12 @@
   <parent>
     <groupId>@project.groupId@</groupId>
     <artifactId>@project.artifactId@</artifactId>
-    <version>@project.version@</version>
+    <version>${revision}</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <artifactId>{{artifactId}}</artifactId>
   <name>{{artifactId}}</name>
-  <version>{{artifactVersion}}</version>
+  <version>${revision}</version>
   <dependencies>
   {{#useOas2}}
     <dependency>
