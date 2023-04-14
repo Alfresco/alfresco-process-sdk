@@ -80,7 +80,7 @@
   </distributionManagement>
 
 <properties>
-    <revision>7.10.0</revision>
+    <revision>7.10.0-SNAPSHOT</revision>
     <project.scm.organisation>Alfresco</project.scm.organisation>
     <project.scm.repository>alfresco-process-sdk</project.scm.repository>
     <project.year>2023</project.year>
