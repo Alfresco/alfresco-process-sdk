@@ -32,6 +32,7 @@
     <aps.api>https://${environment.host}/activiti-app/v3/api-docs?group=enterprise</aps.api>
     <!-- AAE INFRASTRUCTURE -->
     <aae.deployment.api>https://${environment.apa.host}/deployment-service/v3/api-docs/Deployment%20Service</aae.deployment.api>
+    <aae.admin-preference.api>https://${environment.apa.host}/deployment-service/v3/api-docs/Preference</aae.admin-preference.api>
     <aae.modeling.api>https://${environment.apa.host}/modeling-service/v3/api-docs/Modeling</aae.modeling.api>
     <aae.dmn-simulation.api>https://${environment.apa.host}/dmn-service/v3/api-docs/DMN%20Simulation</aae.dmn-simulation.api>
     <aae.script-modeling.api>https://${environment.apa.host}/script-service/v3/api-docs/Script%20Runtime</aae.script-modeling.api>
@@ -205,6 +206,22 @@
                     <apiPackage>${project.groupId}.activiti.deployment.handler</apiPackage>
                     <modelPackage>${project.groupId}.activiti.deployment.model</modelPackage>
                     <invokerPackage>${project.groupId}.activiti.deployment</invokerPackage>
+                  </configOptions>
+                </configuration>
+              </execution>
+              <execution>
+                <id>alfresco-activiti-admin-preference-rest-api</id>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+                <configuration>
+                  <inputSpec>${aae.admin-preference.api}</inputSpec>
+                  <output>${project.build.generatedSourceDirectory}/alfresco-activiti-admin-preference-rest-api</output>
+                  <artifactId>alfresco-activiti-admin-preference-rest-api</artifactId>
+                  <configOptions>
+                    <apiPackage>${project.groupId}.activiti.admin.preference.handler</apiPackage>
+                    <modelPackage>${project.groupId}.activiti.admin.preference.model</modelPackage>
+                    <invokerPackage>${project.groupId}.activiti.admin.preference</invokerPackage>
                   </configOptions>
                 </configuration>
               </execution>
