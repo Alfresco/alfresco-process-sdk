@@ -34,7 +34,7 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@v1.36.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@v1.40.1
 
   build:
     runs-on: ubuntu-latest
@@ -78,7 +78,7 @@ jobs:
     if: always() && failure() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     steps:
       - name: Slack Notification
-        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@v1.36.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@v1.40.1
         with:
           channel-id: 'eng-hxp-studio-be-gh-notifs'
           token: ${{ secrets.SLACK_NOTIFICATION_BOT_TOKEN }}
