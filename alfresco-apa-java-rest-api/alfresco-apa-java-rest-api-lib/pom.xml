@@ -28,8 +28,6 @@
     <swagger-codegen-maven-plugin.version>3.0.36</swagger-codegen-maven-plugin.version>
     <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
     <!-- API definitions -->
-    <!-- APS -->
-    <aps.api>https://${environment.host}/activiti-app/v3/api-docs?group=enterprise</aps.api>
     <!-- AAE INFRASTRUCTURE -->
     <aae.deployment.api>https://${environment.apa.host}/deployment-service/v3/api-docs/Deployment%20Service</aae.deployment.api>
     <aae.admin-preference.api>https://${environment.apa.host}/deployment-service/v3/api-docs/Preference</aae.admin-preference.api>
@@ -44,7 +42,6 @@
     <aae.preference.api>https://${environment.apa.host}/${environment.application.name}/preference/v3/api-docs/Preference</aae.preference.api>
   </properties>
   <modules>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-rest-api</module>
     <module>${project.build.generatedSourceDirectory}/alfresco-activiti-deployment-rest-api</module>
     <module>${project.build.generatedSourceDirectory}/alfresco-activiti-modeling-rest-api</module>
     <module>${project.build.generatedSourceDirectory}/alfresco-activiti-form-rest-api</module>
@@ -145,22 +142,6 @@
               </configOptions>
             </configuration>
             <executions>
-              <execution>
-                <id>generate-activiti-api</id>
-                <goals>
-                  <goal>generate</goal>
-                </goals>
-                <configuration>
-                  <inputSpec>${aps.api}</inputSpec>
-                  <output>${project.build.generatedSourceDirectory}/alfresco-activiti-rest-api</output>
-                  <artifactId>alfresco-activiti-rest-api</artifactId>
-                  <configOptions>
-                    <apiPackage>${project.groupId}.activiti.handler</apiPackage>
-                    <modelPackage>${project.groupId}.activiti.model</modelPackage>
-                    <invokerPackage>${project.groupId}.activiti</invokerPackage>
-                  </configOptions>
-                </configuration>
-              </execution>
               <execution>
                 <id>generate-activiti-dmn-simulation-api</id>
                 <goals>
