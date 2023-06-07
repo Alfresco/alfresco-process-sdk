@@ -62,11 +62,6 @@
     </dependency>
     <dependency>
       <groupId>org.alfresco</groupId>
-      <artifactId>alfresco-activiti-rest-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.alfresco</groupId>
       <artifactId>alfresco-activiti-script-modeling-rest-api</artifactId>
       <version>${project.version}</version>
     </dependency>
