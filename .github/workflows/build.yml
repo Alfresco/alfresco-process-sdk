@@ -3,10 +3,10 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
     branches:
-      - main
+      - develop
   # allows triggering workflow manually or from other jobs
   workflow_dispatch:
     inputs:
@@ -60,7 +60,7 @@ jobs:
         id: define_maven_command
         shell: bash
         run: |
-          if [[ ${{ github.event_name }} == 'push' || ( ${{ github.ref_name }} == 'main' && '${{ inputs.shouldDeploy }}' == 'true' ) ]]
+          if [[ ${{ github.event_name }} == 'push' || ( ${{ github.ref_name }} == 'develop' && '${{ inputs.shouldDeploy }}' == 'true' ) ]]
           then
             echo "command=deploy" >> $GITHUB_OUTPUT
           else
