@@ -28,7 +28,7 @@
     <swagger-codegen-maven-plugin.version>3.0.36</swagger-codegen-maven-plugin.version>
     <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
     <alfresco-deployment-service.version>7.12.0-alpha.22</alfresco-deployment-service.version>
-    <alfresco-modeling-service.version>7.12.0-alpha.11</alfresco-modeling-service.version>
+    <alfresco-modeling-service.version>0.0.1-PR-775-SNAPSHOT</alfresco-modeling-service.version>
     <alfresco-process.version>7.12.0-alpha.6</alfresco-process.version>
     <!-- API definitions -->
     <!-- AAE INFRASTRUCTURE -->
