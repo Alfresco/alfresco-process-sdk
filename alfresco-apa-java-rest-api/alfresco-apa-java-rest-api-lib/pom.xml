@@ -150,6 +150,13 @@
                     </artifactItem>
                     <artifactItem>
                       <groupId>com.alfresco.process</groupId>
+                      <artifactId>alfresco-process-dmn-simulation-spring-boot-starter</artifactId>
+                      <version>${alfresco-process.version}</version>
+                      <classifier>api-docs</classifier>
+                      <type>json</type>
+                    </artifactItem>
+                    <artifactItem>
+                      <groupId>com.alfresco.process</groupId>
                       <artifactId>alfresco-process-preference-spring-boot-starter</artifactId>
                       <version>${alfresco-process.version}</version>
                       <classifier>api-docs</classifier>
@@ -184,9 +191,9 @@
                       <type>json</type>
                     </artifactItem>
                     <artifactItem>
-                      <groupId>com.alfresco.process</groupId>
+                      <groupId>org.activiti.cloud</groupId>
                       <artifactId>activiti-cloud-starter-audit</artifactId>
-                      <version>${alfresco-process.version}</version>
+                      <version>${activiti-cloud.version}</version>
                       <classifier>api-docs</classifier>
                       <type>json</type>
                     </artifactItem>
