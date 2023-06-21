@@ -27,9 +27,6 @@
     <swagger-codegen-maven-plugin.groupId>io.swagger.codegen.v3</swagger-codegen-maven-plugin.groupId>
     <swagger-codegen-maven-plugin.version>3.0.36</swagger-codegen-maven-plugin.version>
     <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
-    <alfresco-deployment-service.version>7.12.0-alpha.22</alfresco-deployment-service.version>
-    <alfresco-modeling-service.version>7.12.0-alpha.11</alfresco-modeling-service.version>
-    <alfresco-process.version>7.12.0-alpha.6</alfresco-process.version>
     <!-- API definitions -->
     <!-- AAE INFRASTRUCTURE -->
     <aae.deployment.api>https://${environment.apa.host}/deployment-service/v3/api-docs/Deployment%20Service</aae.deployment.api>
@@ -188,14 +185,7 @@
                     </artifactItem>
                     <artifactItem>
                       <groupId>com.alfresco.process</groupId>
-                      <artifactId>alfresco-process-dmn-simulation-spring-boot-starter</artifactId>
-                      <version>${alfresco-process.version}</version>
-                      <classifier>api-docs</classifier>
-                      <type>json</type>
-                    </artifactItem>
-                    <artifactItem>
-                      <groupId>com.alfresco.process</groupId>
-                      <artifactId>alfresco-process-dmn-simulation-spring-boot-starter</artifactId>
+                      <artifactId>activiti-cloud-starter-audit</artifactId>
                       <version>${alfresco-process.version}</version>
                       <classifier>api-docs</classifier>
                       <type>json</type>
