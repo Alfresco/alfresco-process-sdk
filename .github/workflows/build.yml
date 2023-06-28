@@ -8,13 +8,13 @@ on:
     branches:
       - develop
   # allows triggering workflow manually or from other jobs
-  workflow_dispatch:
-    inputs:
-      shouldDeploy:
-        description: 'Deploy after build?'
-        type: boolean
-        default: false
-        required: false
+#  workflow_dispatch:
+#    inputs:
+#      shouldDeploy:
+#        description: 'Deploy after build?'
+#        type: boolean
+#        default: false
+#        required: false
 
 env:
   MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
