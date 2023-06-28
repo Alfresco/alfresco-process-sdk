@@ -7,14 +7,6 @@ on:
   pull_request:
     branches:
       - develop
-  # allows triggering workflow manually or from other jobs
-#  workflow_dispatch:
-#    inputs:
-#      shouldDeploy:
-#        description: 'Deploy after build?'
-#        type: boolean
-#        default: false
-#        required: false
 
 env:
   MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
@@ -35,42 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@v1.36.0
-
-#check if this build job does something that the common one does not
-#  build:
-#    runs-on: ubuntu-latest
-#    needs:
-#      - pre-commit
-#    steps:
-#      - uses: actions/checkout@v3 # same
-#
-#      - uses: actions/cache@v3  # same
-#        with:
-#          path: ~/.m2/repository
-#          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-#          restore-keys: |
-#            ${{ runner.os }}-maven-
-#
-#      - name: Set up JDK # same
-#        uses: actions/setup-java@v3
-#        with:
-#          java-version: '11'
-#          distribution: 'temurin'
-#
-#      - name: Define Maven Command
-#        id: define_maven_command
-#        shell: bash
-#        run: |
-#          if [[ ${{ github.event_name }} == 'push' || ( ${{ github.ref_name }} == 'develop' && '${{ inputs.shouldDeploy }}' == 'true' ) ]]
-#          then
-#            echo "command=deploy" >> $GITHUB_OUTPUT
-#          else
-#            echo "command=verify" >> $GITHUB_OUTPUT
-#          fi
-#
-#      - name: Build, Test and sometimes deploy
-#        run: |
-#          mvn ${{ steps.define_maven_command.outputs.command }} $MAVEN_CLI_OPTS
 
   build:
     runs-on: ubuntu-latest
