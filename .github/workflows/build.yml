@@ -49,7 +49,6 @@ jobs:
           docker-password: ${{ secrets.DOCKER_PASSWORD }}
           git-username: ${{ secrets.BOT_GITHUB_USERNAME }}
           java-version: '17'
-          reuse-testcontainers: 'true'
 
   notify:
     runs-on: ubuntu-latest
