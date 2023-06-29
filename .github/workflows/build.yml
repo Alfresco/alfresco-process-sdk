@@ -56,14 +56,14 @@ jobs:
       - build
     if: ${{ github.event_name == 'push' }}
     env:
-      VERSION: ${{ needs.build.outputs.version }} # might be a problem if not using the common build gh actions
+      VERSION: ${{ needs.build.outputs.version }}
       DEVELOPMENT_BRANCH: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@v3
       - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@v1.40.1
       - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@v1.40.1
         with:
-          version: ${{ needs.build.outputs.version }} # might be a problem if not using the common build gh actions
+          version: ${{ needs.build.outputs.version }}
           auto-merge: 'true'
           labels: ${{ env.DEVELOPMENT_BRANCH }}
           base-branch-name: ${{ env.DEVELOPMENT_BRANCH }}
