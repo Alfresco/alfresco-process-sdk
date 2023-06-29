@@ -7,14 +7,6 @@ on:
   pull_request:
     branches:
       - develop
-  # allows triggering workflow manually or from other jobs
-  workflow_dispatch:
-    inputs:
-      shouldDeploy:
-        description: 'Deploy after build?'
-        type: boolean
-        default: false
-        required: false
 
 env:
   MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
@@ -40,36 +32,23 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - pre-commit
+    outputs:
+      version: ${{ steps.build-and-tag.outputs.version }}
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/cache@v3
+      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@v2.3.0
+        id: build-and-tag
         with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-
-      - name: Define Maven Command
-        id: define_maven_command
-        shell: bash
-        run: |
-          if [[ ${{ github.event_name }} == 'push' || ( ${{ github.ref_name }} == 'develop' && '${{ inputs.shouldDeploy }}' == 'true' ) ]]
-          then
-            echo "command=deploy" >> $GITHUB_OUTPUT
-          else
-            echo "command=verify" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Build, Test and sometimes deploy
-        run: |
-          mvn ${{ steps.define_maven_command.outputs.command }} $MAVEN_CLI_OPTS
+          upload-jars: 'true'
+          upload-coverage: 'true'
+          extra-maven-opts: -T 1C -DunitTests.parallel=true
+          maven-username: ${{ secrets.NEXUS_USERNAME }}
+          maven-password: ${{ secrets.NEXUS_PASSWORD }}
+          quay-username: ${{ secrets.QUAY_USERNAME }}
+          quay-password: ${{ secrets.QUAY_PASSWORD }}
+          docker-username: ${{ secrets.DOCKER_USERNAME }}
+          docker-password: ${{ secrets.DOCKER_PASSWORD }}
+          git-username: ${{ secrets.BOT_GITHUB_USERNAME }}
+          java-version: '17'
 
   promote:
     runs-on: ubuntu-latest
