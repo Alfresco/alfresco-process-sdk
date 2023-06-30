@@ -33,7 +33,7 @@ This section contains the steps required for using the SDK with Spring.
 
 #### Pre-Requisites
 
-- Java version 11 or higher
+- Java version 17 or higher
 - Maven version 3.3 or higher
 
 #### 1. Create a new Spring Boot application
@@ -288,7 +288,7 @@ If you still intend to build it, follow these instructions:
 
 ### Pre-Requisites
 
-- Java version 11 or higher
+- Java version 17 or higher
 - Maven version 3.3 or higher
 - An APA environment with a deployed application from which to fetch the API definitions
 
