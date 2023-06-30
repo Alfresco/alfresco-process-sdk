@@ -20,9 +20,9 @@
     <spring-boot.version>${project.parent.version}</spring-boot.version>
     <project.build.generatedSourceDirectory>generated</project.build.generatedSourceDirectory>
     <swagger-core.version>1.5.20</swagger-core.version>
-    <swagger-core-v3-version>2.1.11</swagger-core-v3-version>
+    <swagger-core-v3-version>2.2.14</swagger-core-v3-version>
     <swagger-codegen-maven-plugin.groupId>io.swagger.codegen.v3</swagger-codegen-maven-plugin.groupId>
-    <swagger-codegen-maven-plugin.version>3.0.36</swagger-codegen-maven-plugin.version>
+    <swagger-codegen-maven-plugin.version>3.0.46</swagger-codegen-maven-plugin.version>
     <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
   </properties>
   <modules>
@@ -35,6 +35,7 @@
     <module>${project.build.generatedSourceDirectory}/alfresco-activiti-audit-rest-api</module>
     <module>${project.build.generatedSourceDirectory}/alfresco-activiti-dmn-simulation-rest-api</module>
     <module>${project.build.generatedSourceDirectory}/alfresco-activiti-script-modeling-rest-api</module>
+    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-admin-preference-rest-api</module>
   </modules>
   <dependencyManagement>
     <dependencies>
@@ -380,7 +381,10 @@
                   <goal>exec</goal>
                 </goals>
                 <configuration>
-                  <executable>${project.basedir}/patch.sh</executable>
+                  <executable>bash</executable>
+                  <arguments>
+                    <argument>patch.sh</argument>
+                  </arguments>
                 </configuration>
               </execution>
             </executions>
