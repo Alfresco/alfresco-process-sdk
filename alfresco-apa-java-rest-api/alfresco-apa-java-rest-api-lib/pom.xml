@@ -26,16 +26,16 @@
     <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
   </properties>
   <modules>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-deployment-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-modeling-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-form-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-preference-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-query-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-runtime-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-audit-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-dmn-simulation-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-script-modeling-rest-api</module>
-    <module>${project.build.generatedSourceDirectory}/alfresco-activiti-admin-preference-rest-api</module>
+    <module>generated/alfresco-activiti-deployment-rest-api</module>
+    <module>generated/alfresco-activiti-modeling-rest-api</module>
+    <module>generated/alfresco-activiti-form-rest-api</module>
+    <module>generated/alfresco-activiti-preference-rest-api</module>
+    <module>generated/alfresco-activiti-query-rest-api</module>
+    <module>generated/alfresco-activiti-runtime-rest-api</module>
+    <module>generated/alfresco-activiti-audit-rest-api</module>
+    <module>generated/alfresco-activiti-dmn-simulation-rest-api</module>
+    <module>generated/alfresco-activiti-script-modeling-rest-api</module>
+    <module>generated/alfresco-activiti-admin-preference-rest-api</module>
   </modules>
   <dependencyManagement>
     <dependencies>

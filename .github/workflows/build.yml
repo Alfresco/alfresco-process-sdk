@@ -39,7 +39,6 @@ jobs:
         id: build-and-tag
         with:
           upload-jars: 'true'
-          upload-coverage: 'true'
           extra-maven-opts: -T 1C -DunitTests.parallel=true
           maven-username: ${{ secrets.NEXUS_USERNAME }}
           maven-password: ${{ secrets.NEXUS_PASSWORD }}
