@@ -10,3 +10,11 @@ spec:
             pattern: "<alfresco-process-sdk.version>(.*)</alfresco-process-sdk.version>"
             files:
               - pom.xml
+    - urls:
+        - https://github.com/Alfresco/alfresco-process-releases
+      reusePullRequest: true
+      changes:
+        - regex:
+            pattern: "<alfresco-process-sdk.version>(.*)</alfresco-process-sdk.version>"
+            files:
+              - pom.xml
