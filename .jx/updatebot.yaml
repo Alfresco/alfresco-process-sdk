@@ -4,6 +4,7 @@ spec:
   rules:
     - urls:
         - https://github.com/Alfresco/alfresco-process-acceptance-tests
+        - https://github.com/Alfresco/alfresco-process-releases
       reusePullRequest: true
       changes:
         - regex:
