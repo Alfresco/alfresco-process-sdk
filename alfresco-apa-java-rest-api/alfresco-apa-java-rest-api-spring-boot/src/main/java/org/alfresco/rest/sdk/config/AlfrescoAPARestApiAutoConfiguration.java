@@ -18,6 +18,7 @@ package org.alfresco.rest.sdk.config;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableFeignClients(basePackages = {
@@ -32,6 +33,7 @@ import org.springframework.context.annotation.Configuration;
     "org.alfresco.activiti.dmn.simulation.handler",
     "org.alfresco.activiti.runtime.handler"
 })
+@PropertySource("classpath:config/alfresco-apa-rest-api.properties")
 public class AlfrescoAPARestApiAutoConfiguration {
 
 }

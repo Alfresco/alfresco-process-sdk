@@ -24,7 +24,6 @@
       <groupId>io.github.openfeign</groupId>
       <artifactId>feign-httpclient</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.alfresco</groupId>
       <artifactId>alfresco-activiti-audit-rest-api</artifactId>

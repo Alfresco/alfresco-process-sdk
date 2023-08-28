@@ -13,15 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.alfresco.java.rest.client.sample;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+package org.alfresco.rest.sdk.feign.config;
 
-@SpringBootTest
-public class RESTClientSampleApplicationTest {
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import org.springframework.context.annotation.Import;
 
-    @Test
-    void contextLoads() {
-    }
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
+@Import({FeignHttpClientConfiguration.class})
+public @interface EnableHttpClientConfiguration {
+
 }

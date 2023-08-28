@@ -12,15 +12,18 @@ case $(uname | tr '[:upper:]' '[:lower:]') in
 esac
 
 find "${GENERATED_SOURCE_DIR}" -type f -name "*.java" -exec sed \
-  -e 's;url = "${processServicesEnterprise_.url:.*}";url = "${process.service.url}", path = "${process.service.path}";g' \
-  -e 's;url = "${deploymentReST_.url:}";url = "${alfresco.service.deployment.url}", path = "${alfresco.service.deployment.path}";g' \
-  -e 's;url = "${modelingReST_.url.*}";url = "${modeling.url}", path = "${modeling.path}";g' \
-  -e 's;url = "${runtimeBundleReST_.url.*}";url = "${activiti.service.runtime.url}", path = "${activiti.service.runtime.path}";g' \
-  -e 's;url = "${auditServiceReST_.url.*}";url = "${activiti.service.audit.url}", path = "${activiti.service.audit.path}";g' \
-  -e 's;url = "${preferenceReST_.url.*}";url = "${activiti.service.preference.url}", path = "${activiti.service.preference.path}";g' \
-  -e 's;url = "${formReST_.url.*}";url = "${activiti.service.form.url}", path = "${activiti.service.form.path}";g' \
-  -e 's;url = "${queryServiceReST_.url:}";url = "${activiti.service.query.url}", path = "${activiti.service.query.path}";g' \
-  -e 's;url = "${processStorageReST_.url:}";url = "${alfresco.service.process.storage.url}", path = "${alfresco.service.process.storage.path}";g' \
+  -e 's;url = "${processServicesEnterprise_.url.*}";url = "${process.service.url}", path = "${process.service.path}";g' \
+  -e 's;url = "${alfresco-activiti-deployment-rest-api.url.*}";url = "${alfresco.service.deployment.url}", path = "${alfresco.service.deployment.path}";g' \
+  -e 's;url = "${alfresco-activiti-modeling-rest-api.*}";url = "${modeling.url}", path = "${modeling.path}";g' \
+  -e 's;url = "${alfresco-activiti-runtime-rest-api.url.*}";url = "${activiti.service.runtime.url}", path = "${activiti.service.runtime.path}";g' \
+  -e 's;url = "${alfresco-activiti-audit-rest-api.url.*}";url = "${activiti.service.audit.url}", path = "${activiti.service.audit.path}";g' \
+  -e 's;url = "${alfresco-activiti-admin-preference-rest-api.url.*}";url = "${activiti.service.preference.url}", path = "${activiti.service.preference.path}";g' \
+  -e 's;url = "${alfresco-activiti-preference-rest-api.url.*}";url = "${activiti.service.preference.url}", path = "${activiti.service.preference.path}";g' \
+  -e 's;url = "${alfresco-activiti-form-rest-api.url.*}";url = "${activiti.service.form.url}", path = "${activiti.service.form.path}";g' \
+  -e 's;url = "${alfresco-activiti-query-rest-api.url.*}";url = "${activiti.service.query.url}", path = "${activiti.service.query.path}";g' \
+  -e 's;url = "${alfresco-activiti-dmn-simulation-rest-api.url.*}";url = "${alfresco.service.dmn.simulation.url}", path = "${alfresco.service.dmn.simulation.path}";g' \
+  -e 's;url = "${alfresco-activiti-script-modeling-rest-api.url.*}";url = "${alfresco.service.script.modeling.url}", path = "${alfresco.service.script.modeling.path}";g' \
+  -e 's;url = "${processStorageReST_.url.*}";url = "${alfresco.service.process.storage.url}", path = "${alfresco.service.process.storage.path}";g' \
   -e 's;@RequestPart("file") MultipartFile file;@PathVariable("file") MultipartFile file;g' \
   -e 's;ErrorModelNamenamespaceorgSpringframeworkHateoasNameEntityModelOfJobExecution;EntryResponseContentOfJobExecution;g' \
   -e 's@import org\.alfresco\..*\.ResponseEntity;@@g' \
