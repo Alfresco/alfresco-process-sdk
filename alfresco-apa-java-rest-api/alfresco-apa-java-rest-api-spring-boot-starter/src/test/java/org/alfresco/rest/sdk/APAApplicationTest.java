@@ -16,16 +16,50 @@
 
 package org.alfresco.rest.sdk;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
 @TestPropertySource("classpath:application-test.properties")
 public class APAApplicationTest {
 
-    @Test
-    void contextLoads() {
+    @Autowired
+    private Environment env;
 
+   @Test
+    void contextLoads() {
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "modeling.url",
+        "modeling.path",
+        "alfresco.service.deployment.url",
+        "alfresco.service.deployment.path",
+        "activiti.service.query.url",
+        "activiti.service.query.path",
+        "activiti.service.audit.url",
+        "activiti.service.audit.path",
+        "activiti.service.runtime.url",
+        "activiti.service.runtime.path",
+        "activiti.service.form.url",
+        "activiti.service.form.path",
+        "activiti.service.preference.url",
+        "activiti.service.preference.path",
+        "alfresco.service.dmn.simulation.url",
+        "alfresco.service.dmn.simulation.path",
+        "alfresco.service.script.modeling.url",
+        "alfresco.service.script.modeling.path",
+    })
+    void configurationPropertiesExist(String propertyName) {
+        assertThat(env.getProperty(propertyName)).isNotBlank();
     }
 }

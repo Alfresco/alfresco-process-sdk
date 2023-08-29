@@ -1,6 +1,7 @@
 package {{configPackage}};
 
 import org.alfresco.rest.sdk.feign.config.EnableAuthConfiguration;
+import org.alfresco.rest.sdk.feign.config.EnableHttpClientConfiguration;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 */
 @Configuration
 @EnableAuthConfiguration
+@EnableHttpClientConfiguration
 public class ClientConfiguration {
 
 }

@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import feign.RequestInterceptor;
+import okhttp3.OkHttpClient;
 import org.activiti.api.runtime.shared.security.SecurityContextTokenProvider;
 import org.activiti.cloud.api.process.model.impl.conf.CloudProcessModelAutoConfiguration;
 import org.activiti.cloud.api.task.model.impl.conf.CloudTaskModelAutoConfiguration;
@@ -56,6 +57,11 @@ public class FeignConfiguration {
     @Bean
     feign.Logger.Level feignLoggerLevel() {
         return feign.Logger.Level.HEADERS;
+    }
+
+    @Bean
+    public OkHttpClient okHttpClient() {
+        return new OkHttpClient();
     }
 
     @Primary
