@@ -33,7 +33,7 @@ jobs:
     name: Check dependabot build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: Activiti/Activiti/.github/actions/check-ext-build@8.0.0-alpha.10
 
   pre-commit:
@@ -72,7 +72,7 @@ jobs:
       VERSION: ${{ needs.build.outputs.version }}
       DEVELOPMENT_BRANCH: ${{ github.ref_name }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@v2.5.0
       - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@v2.5.0
         with:
