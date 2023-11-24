@@ -92,13 +92,13 @@
     <maven.compiler.release>${java.release}</maven.compiler.release>
     <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
     <spring-cloud.version>2022.0.4</spring-cloud.version>
-    <swagger-core.version>1.6.9</swagger-core.version>
-    <license-maven-plugin.version>4.2</license-maven-plugin.version>
+    <swagger-core.version>1.6.10</swagger-core.version>
+    <license-maven-plugin.version>4.3</license-maven-plugin.version>
     <third-party-license-maven-plugin.version>2.0.1.alfresco-2</third-party-license-maven-plugin.version>
-    <alfresco-deployment-service.version>7.14.0-alpha.15</alfresco-deployment-service.version>
-    <alfresco-modeling-service.version>7.14.0-alpha.13</alfresco-modeling-service.version>
-    <alfresco-process.version>7.14.0-alpha.9</alfresco-process.version>
-    <activiti-cloud.version>8.2.0-alpha.5</activiti-cloud.version>
+    <alfresco-deployment-service.version>7.14.0-alpha.19</alfresco-deployment-service.version>
+    <alfresco-modeling-service.version>7.14.0-alpha.15</alfresco-modeling-service.version>
+    <alfresco-process.version>7.14.0-alpha.11</alfresco-process.version>
+    <activiti-cloud.version>8.2.0-alpha.6</activiti-cloud.version>
   </properties>
   <repositories>
     <repository>
@@ -214,7 +214,7 @@ limitations under the License.]]>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>flatten-maven-plugin</artifactId>
-          <version>1.4.1</version>
+          <version>1.5.0</version>
         </plugin>
       </plugins>
     </pluginManagement>

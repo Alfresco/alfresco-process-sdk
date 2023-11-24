@@ -32,11 +32,11 @@ jobs:
   pre-checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Check dependabot build
         uses: Activiti/Activiti/.github/actions/check-ext-build@4db084fcbb13a288f3b66ac08fc50a5ab7f144ed # 8.0.0-alpha.10
       - name: pre-commit
-        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@9cf7c9d178e9ab74bf533217febe4dafe73247f4 # v3.8.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@049f1deac5540435764df0d563d592b89e14e0b4 # v4.1.0
         with:
           skip_checkout: true
       - name: Ensure SHA pinned actions
@@ -49,7 +49,7 @@ jobs:
     outputs:
       version: ${{ steps.build-and-tag.outputs.version }}
     steps:
-      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@e1ddcc40cda8ee6779f22da998b0e59e24a4c940 # v2.5.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@049f1deac5540435764df0d563d592b89e14e0b4 # v4.1.0
         id: build-and-tag
         with:
           upload-jars: 'true'
@@ -72,9 +72,9 @@ jobs:
       VERSION: ${{ needs.build.outputs.version }}
       DEVELOPMENT_BRANCH: ${{ github.ref_name }}
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
-      - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@e1ddcc40cda8ee6779f22da998b0e59e24a4c940 # v2.5.0
-      - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@e1ddcc40cda8ee6779f22da998b0e59e24a4c940 # v2.5.0
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@049f1deac5540435764df0d563d592b89e14e0b4 # v4.1.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@049f1deac5540435764df0d563d592b89e14e0b4 # v4.1.0
         with:
           version: ${{ needs.build.outputs.version }}
           auto-merge: 'true'
@@ -91,7 +91,7 @@ jobs:
     if: always() && failure() && github.event_name == 'push'
     steps:
       - name: Slack Notification
-        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@e1ddcc40cda8ee6779f22da998b0e59e24a4c940 # v2.5.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@049f1deac5540435764df0d563d592b89e14e0b4 # v4.1.0
         with:
           channel-id: 'eng-hxp-studio-be-gh-notifs'
           token: ${{ secrets.SLACK_NOTIFICATION_BOT_TOKEN }}
