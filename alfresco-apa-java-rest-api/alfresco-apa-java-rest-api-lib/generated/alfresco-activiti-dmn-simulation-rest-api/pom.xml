@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.alfresco</groupId>
     <artifactId>alfresco-apa-java-rest-api-lib</artifactId>
-    <version>${revision}</version>
+    <version>7.14.0-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <artifactId>alfresco-activiti-dmn-simulation-rest-api</artifactId>
   <name>alfresco-activiti-dmn-simulation-rest-api</name>
-  <version>${revision}</version>
+  <version>7.14.0-SNAPSHOT</version>
   <dependencies>
     <dependency>
       <groupId>io.swagger</groupId>
@@ -28,11 +28,11 @@
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jsr310</artifactId>
     </dependency>
-      <dependency>
-        <groupId>javax.validation</groupId>
-        <artifactId>validation-api</artifactId>
-        <scope>provided</scope>
-      </dependency>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>

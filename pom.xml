@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.9</version>
+    <version>3.1.2</version>
     <relativePath/>
   </parent>
   <groupId>org.alfresco</groupId>
   <artifactId>alfresco-process-sdk</artifactId>
-  <version>${revision}</version>
+  <version>7.14.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Alfresco :: Process SDK :: Parent</name>
   <description>Parent for Alfresco Process SDK</description>
@@ -81,21 +81,24 @@
   </distributionManagement>
 
 <properties>
-    <revision>7.10.0</revision>
     <project.scm.organisation>Alfresco</project.scm.organisation>
     <project.scm.repository>alfresco-process-sdk</project.scm.repository>
     <project.year>2023</project.year>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.release>11</java.release>
-    <java.version>1.${java.release}</java.version>
+    <java.release>${java.version}</java.release>
+    <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.release>${java.release}</maven.compiler.release>
     <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
-    <spring-cloud.version>2021.0.5</spring-cloud.version>
+    <spring-cloud.version>2022.0.4</spring-cloud.version>
     <swagger-core.version>1.6.9</swagger-core.version>
     <license-maven-plugin.version>4.2</license-maven-plugin.version>
     <third-party-license-maven-plugin.version>2.0.1.alfresco-2</third-party-license-maven-plugin.version>
+    <alfresco-deployment-service.version>7.14.0-alpha.19</alfresco-deployment-service.version>
+    <alfresco-modeling-service.version>7.14.0-alpha.15</alfresco-modeling-service.version>
+    <alfresco-process.version>7.14.0-alpha.10</alfresco-process.version>
+    <activiti-cloud.version>8.2.0-alpha.6</activiti-cloud.version>
   </properties>
   <repositories>
     <repository>
@@ -119,7 +122,7 @@
       </snapshots>
     </repository>
     <repository>
-      <id>alfresco-private-repository</id>
+      <id>alfresco-private</id>
       <url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
     </repository>
   </repositories>
