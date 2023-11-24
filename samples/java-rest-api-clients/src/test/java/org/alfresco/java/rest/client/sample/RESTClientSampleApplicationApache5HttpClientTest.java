@@ -15,13 +15,24 @@
  */
 package org.alfresco.java.rest.client.sample;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.apache.hc.client5.http.classic.HttpClient;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-public class RESTClientSampleApplicationTest {
+@SpringBootTest(properties = "spring.cloud.openfeign.httpclient.hc5.enabled=true")
+public class RESTClientSampleApplicationApache5HttpClientTest {
+
+    @Autowired
+    private HttpClient httpClient;
+
+    @Autowired
+    private feign.Client feignClient;
 
     @Test
     void contextLoads() {
+        assertThat(feignClient).isInstanceOf(feign.hc5.ApacheHttp5Client.class);
     }
 }

@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.alfresco</groupId>
     <artifactId>alfresco-process-sdk</artifactId>
-    <version>${revision}</version>
+    <version>7.14.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>alfresco-java-rest-api-common</artifactId>
@@ -17,6 +17,16 @@
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-okhttp</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-hc5</artifactId>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>

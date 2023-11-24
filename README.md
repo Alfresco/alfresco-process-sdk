@@ -33,7 +33,7 @@ This section contains the steps required for using the SDK with Spring.
 
 #### Pre-Requisites
 
-- Java version 11 or higher
+- Java version 17 or higher
 - Maven version 3.3 or higher
 
 #### 1. Create a new Spring Boot application
@@ -288,7 +288,7 @@ If you still intend to build it, follow these instructions:
 
 ### Pre-Requisites
 
-- Java version 11 or higher
+- Java version 17 or higher
 - Maven version 3.3 or higher
 - An APA environment with a deployed application from which to fetch the API definitions
 
@@ -378,7 +378,11 @@ See the [plugin documentation](https://www.mojohaus.org/license-maven-plugin/) f
 
 ## CI/CD
 
-Running on GitHub Actions requires the following variables to be set:
+Running on GH Actions.
+
+For Dependabot PRs to be validated by CI, the label "CI" should be added to the PR.
+
+Requires the following variables to be set:
 
 | Name                 | Description                                                      |
 | -------------------- | ---------------------------------------------------------------- |
@@ -386,16 +390,16 @@ Running on GitHub Actions requires the following variables to be set:
 | ENVIRONMENT_APP      | Name of the app within the environment to use for SDK generation |
 | ENVIRONMENT_HOST     | Base URL of environment to use for SDK generation                |
 
-The following secrets are required:
-| Name | Description
-|----------------|------------------------------------|
-| NEXUS_USERNAME | Internal Maven repository username |
-| NEXUS_PASSWORD | Internal Maven repository password |
-| SLACK_NOTIFICATION_BOT_TOKEN | Slack token for failures |
+Requires the following secrets to be set:
 
-Dependabot requires:
-| Name | Description
-|----------------|------------------------------------|
-| NEXUS_USERNAME | Internal Maven repository username |
-| NEXUS_PASSWORD | Internal Maven repository password |
-| DEPENDABOT_GITHUB_TOKEN | Token for automated dependabot PRs |
+| Name                         | Description                        |
+| ---------------------------- | ---------------------------------- |
+| BOT_GITHUB_TOKEN             | Token to launch other builds on GH |
+| BOT_GITHUB_USERNAME          | Username to issue propagation PRs  |
+| DOCKER_USERNAME              | Docker Hub repository username     |
+| DOCKER_PASSWORD              | Docker Hub repository password     |
+| NEXUS_USERNAME               | Internal Maven repository username |
+| NEXUS_PASSWORD               | Internal Maven repository password |
+| QUAY_USERNAME                | Quay.io docker registry username   |
+| QUAY_PASSWORD                | Quay.io docker registry password   |
+| SLACK_NOTIFICATION_BOT_TOKEN | Token to notify slack on failure   |

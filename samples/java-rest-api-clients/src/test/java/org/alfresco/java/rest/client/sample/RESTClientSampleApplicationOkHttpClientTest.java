@@ -15,13 +15,26 @@
  */
 package org.alfresco.java.rest.client.sample;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
-public class RESTClientSampleApplicationTest {
+import okhttp3.OkHttpClient;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootTest(properties = "spring.cloud.openfeign.okhttp.enabled=true")
+public class RESTClientSampleApplicationOkHttpClientTest {
+
+    @Autowired
+    private OkHttpClient httpClient;
+
+    @Autowired
+    private feign.Client feignClient;
 
     @Test
     void contextLoads() {
+        assertThat(feignClient).isInstanceOf(feign.okhttp.OkHttpClient.class);
     }
 }
