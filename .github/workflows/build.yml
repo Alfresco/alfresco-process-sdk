@@ -61,7 +61,7 @@ jobs:
           docker-username: ${{ secrets.DOCKER_USERNAME }}
           docker-password: ${{ secrets.DOCKER_PASSWORD }}
           git-username: ${{ secrets.BOT_GITHUB_USERNAME }}
-          java-version: '17'
+          java-version: '21'
 
   promote:
     runs-on: ubuntu-latest
