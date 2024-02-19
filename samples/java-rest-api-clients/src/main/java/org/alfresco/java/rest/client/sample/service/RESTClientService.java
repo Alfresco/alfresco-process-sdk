@@ -20,9 +20,9 @@ import org.alfresco.activiti.audit.model.CloudRuntimeEventModel;
 import org.alfresco.activiti.audit.model.CloudRuntimeEventModel.EventTypeEnum;
 import org.alfresco.activiti.audit.model.EntryResponseContentCloudRuntimeEventObjectCloudRuntimeEventType;
 import org.alfresco.activiti.audit.model.ListResponseContentCloudRuntimeEventObjectCloudRuntimeEventType;
-import org.alfresco.activiti.runtime.handler.ProcessInstanceControllerImplApiClient;
-import org.alfresco.activiti.runtime.handler.ProcessInstanceTasksControllerImplApi;
-import org.alfresco.activiti.runtime.handler.TaskControllerImplApi;
+import org.alfresco.activiti.runtime.handler.ProcessInstanceControllerApiClient;
+import org.alfresco.activiti.runtime.handler.ProcessInstanceTasksControllerApi;
+import org.alfresco.activiti.runtime.handler.TaskControllerApi;
 import org.alfresco.activiti.runtime.model.CompleteTaskPayload;
 import org.alfresco.activiti.runtime.model.EntryResponseContentCloudProcessInstance;
 import org.alfresco.activiti.runtime.model.EntryResponseContentCloudTask;
@@ -46,21 +46,21 @@ public class RESTClientService {
     private static final Logger LOGGER = LoggerFactory.getLogger(RESTClientService.class);
     public static final String PROCESS_DEFINITION_KEY = "SingleTaskProcess";
 
-    private final ProcessInstanceControllerImplApiClient processInstanceControllerImplApiClient;
+    private final ProcessInstanceControllerApiClient processInstanceControllerApiClient;
 
-    private final ProcessInstanceTasksControllerImplApi processInstanceTasksControllerImplApi;
+    private final ProcessInstanceTasksControllerApi processInstanceTasksControllerApi;
 
-    private final TaskControllerImplApi taskControllerImplApi;
+    private final TaskControllerApi taskControllerApi;
 
     private final AuditEventsControllerImplApi auditEventsControllerImplApi;
 
-    public RESTClientService(ProcessInstanceControllerImplApiClient processInstanceControllerImplApiClient,
-        ProcessInstanceTasksControllerImplApi processInstanceTasksControllerImplApi,
-        TaskControllerImplApi taskControllerImplApi,
+    public RESTClientService(ProcessInstanceControllerApiClient processInstanceControllerApiClient,
+        ProcessInstanceTasksControllerApi processInstanceTasksControllerApi,
+        TaskControllerApi taskControllerApi,
         AuditEventsControllerImplApi auditEventsControllerImplApi) {
-        this.processInstanceControllerImplApiClient = processInstanceControllerImplApiClient;
-        this.processInstanceTasksControllerImplApi = processInstanceTasksControllerImplApi;
-        this.taskControllerImplApi = taskControllerImplApi;
+        this.processInstanceControllerApiClient = processInstanceControllerApiClient;
+        this.processInstanceTasksControllerApi = processInstanceTasksControllerApi;
+        this.taskControllerApi = taskControllerApi;
         this.auditEventsControllerImplApi = auditEventsControllerImplApi;
     }
 
@@ -69,7 +69,7 @@ public class RESTClientService {
 
         LOGGER.info(String.format("Starting new process instance with %s definition key", PROCESS_DEFINITION_KEY));
 
-        ResponseEntity<EntryResponseContentCloudProcessInstance> responseEntity = processInstanceControllerImplApiClient
+        ResponseEntity<EntryResponseContentCloudProcessInstance> responseEntity = processInstanceControllerApiClient
             .startProcess(buildStartProcessPayload(PROCESS_DEFINITION_KEY));
 
         String processId = responseEntity.getBody().getEntry().getId();
@@ -78,7 +78,7 @@ public class RESTClientService {
 
         LOGGER.info("Fetching task of the created process instance");
 
-        ResponseEntity<ListResponseContentCloudTask> tasksOfProcessInstance = processInstanceTasksControllerImplApi
+        ResponseEntity<ListResponseContentCloudTask> tasksOfProcessInstance = processInstanceTasksControllerApi
             .getTasks(processId, null, null, null);
 
         Optional<EntryResponseContentCloudTask> optionalTask = tasksOfProcessInstance
@@ -99,7 +99,7 @@ public class RESTClientService {
         completeTaskPayload.setPayloadType(CompleteTaskPayload.PayloadTypeEnum.COMPLETETASKPAYLOAD);
         completeTaskPayload.setId(UUID.randomUUID().toString());
 
-        taskControllerImplApi.completeTask(taskId, completeTaskPayload);
+        taskControllerApi.completeTask(taskId, completeTaskPayload);
 
         LOGGER.info("Task completed and process finished!!");
 

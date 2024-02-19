@@ -15,6 +15,9 @@ find "${GENERATED_SOURCE_DIR}" -type f -name "*.java" -exec sed \
   -e 's;url = "${processServicesEnterprise_.url.*}";url = "${process.service.url}", path = "${process.service.path}";g' \
   -e 's;url = "${alfresco-activiti-deployment-rest-api.url.*}";url = "${alfresco.service.deployment.url}", path = "${alfresco.service.deployment.path}";g' \
   -e 's;url = "${alfresco-activiti-modeling-rest-api.*}";url = "${modeling.url}", path = "${modeling.path}";g' \
+  -e 's;\(value = "\)/\(.*, url\);\1\2;g' \
+  -e 's;\(value = "\)\(.*\)-\(.*\, url\);\1\2\3;g' \
+  -e 's;\(value = "\)\(.*\)_\(.*\, url\);\1\2\3;g' \
   -e 's;url = "${alfresco-activiti-runtime-rest-api.url.*}";url = "${activiti.service.runtime.url}", path = "${activiti.service.runtime.path}";g' \
   -e 's;url = "${alfresco-activiti-audit-rest-api.url.*}";url = "${activiti.service.audit.url}", path = "${activiti.service.audit.path}";g' \
   -e 's;url = "${alfresco-activiti-admin-preference-rest-api.url.*}";url = "${activiti.service.preference.url}", path = "${activiti.service.preference.path}";g' \
