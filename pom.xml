@@ -92,7 +92,7 @@
     <maven.compiler.release>${java.release}</maven.compiler.release>
     <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
     <spring-cloud.version>2023.0.0</spring-cloud.version>
-    <swagger-core.version>1.6.10</swagger-core.version>
+    <swagger-core.version>1.6.14</swagger-core.version>
     <license-maven-plugin.version>4.3</license-maven-plugin.version>
     <third-party-license-maven-plugin.version>2.0.1.alfresco-2</third-party-license-maven-plugin.version>
     <alfresco-deployment-service.version>7.18.0-alpha.8</alfresco-deployment-service.version>
@@ -214,7 +214,7 @@ limitations under the License.]]>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>flatten-maven-plugin</artifactId>
-          <version>1.5.0</version>
+          <version>1.6.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
