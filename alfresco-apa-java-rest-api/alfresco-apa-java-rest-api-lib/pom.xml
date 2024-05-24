@@ -19,10 +19,10 @@
   <properties>
     <spring-boot.version>${project.parent.version}</spring-boot.version>
     <project.build.generatedSourceDirectory>generated</project.build.generatedSourceDirectory>
-    <swagger-core.version>1.5.20</swagger-core.version>
+    <swagger-core.version>1.6.14</swagger-core.version>
     <swagger-core-v3-version>2.2.20</swagger-core-v3-version>
     <swagger-codegen-maven-plugin.groupId>io.swagger.codegen.v3</swagger-codegen-maven-plugin.groupId>
-    <swagger-codegen-maven-plugin.version>3.0.46</swagger-codegen-maven-plugin.version>
+    <swagger-codegen-maven-plugin.version>3.0.56</swagger-codegen-maven-plugin.version>
     <exec-maven-plugin.version>3.1.1</exec-maven-plugin.version>
   </properties>
   <modules>
