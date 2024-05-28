@@ -36,7 +36,7 @@ jobs:
       - name: Check dependabot build
         uses: Activiti/Activiti/.github/actions/check-ext-build@4db084fcbb13a288f3b66ac08fc50a5ab7f144ed # 8.0.0-alpha.10
       - name: pre-commit
-        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@dc4c1f4e94307af7a916d0ca8c5e2592521d9470 # v5.22.3
+        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@4e8b494acd09f732d9caec5df802af27f396a7e4 # v5.27.0
         with:
           skip_checkout: true
       - name: Ensure SHA pinned actions
@@ -49,7 +49,7 @@ jobs:
     outputs:
       version: ${{ steps.build-and-tag.outputs.version }}
     steps:
-      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@dc4c1f4e94307af7a916d0ca8c5e2592521d9470 # v5.22.3
+      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@4e8b494acd09f732d9caec5df802af27f396a7e4 # v5.27.0
         id: build-and-tag
         with:
           upload-jars: 'true'
@@ -73,8 +73,8 @@ jobs:
       DEVELOPMENT_BRANCH: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
-      - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@dc4c1f4e94307af7a916d0ca8c5e2592521d9470 # v5.22.3
-      - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@dc4c1f4e94307af7a916d0ca8c5e2592521d9470 # v5.22.3
+      - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@4e8b494acd09f732d9caec5df802af27f396a7e4 # v5.27.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@4e8b494acd09f732d9caec5df802af27f396a7e4 # v5.27.0
         with:
           version: ${{ needs.build.outputs.version }}
           auto-merge: 'true'
@@ -91,7 +91,7 @@ jobs:
     if: always() && failure() && github.event_name == 'push'
     steps:
       - name: Slack Notification
-        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@dc4c1f4e94307af7a916d0ca8c5e2592521d9470 # v5.22.3
+        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@4e8b494acd09f732d9caec5df802af27f396a7e4 # v5.27.0
         with:
           channel-id: 'eng-hxp-studio-be-gh-notifs'
           token: ${{ secrets.SLACK_NOTIFICATION_BOT_TOKEN }}
