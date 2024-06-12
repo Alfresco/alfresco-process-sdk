@@ -97,7 +97,7 @@
     <third-party-license-maven-plugin.version>2.0.1.alfresco-2</third-party-license-maven-plugin.version>
     <alfresco-deployment-service.version>7.18.0-alpha.76</alfresco-deployment-service.version>
     <alfresco-modeling-service.version>7.18.0-alpha.76</alfresco-modeling-service.version>
-    <alfresco-process.version>7.18.0-alpha.33</alfresco-process.version>
+    <alfresco-process.version>7.18.0-alpha.34</alfresco-process.version>
     <activiti-cloud.version>8.6.0-alpha.7</activiti-cloud.version>
   </properties>
   <repositories>
