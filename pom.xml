@@ -95,8 +95,8 @@
     <swagger-core.version>1.6.14</swagger-core.version>
     <license-maven-plugin.version>4.5</license-maven-plugin.version>
     <third-party-license-maven-plugin.version>2.0.1.alfresco-2</third-party-license-maven-plugin.version>
-    <alfresco-deployment-service.version>7.18.0-alpha.90</alfresco-deployment-service.version>
-    <alfresco-modeling-service.version>7.18.0-alpha.90</alfresco-modeling-service.version>
+    <alfresco-deployment-service.version>7.18.0-alpha.91</alfresco-deployment-service.version>
+    <alfresco-modeling-service.version>7.18.0-alpha.91</alfresco-modeling-service.version>
     <alfresco-process.version>7.18.0-alpha.41</alfresco-process.version>
     <activiti-cloud.version>8.6.0-alpha.9</activiti-cloud.version>
   </properties>
