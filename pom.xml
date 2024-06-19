@@ -66,6 +66,16 @@
         <artifactId>alfresco-java-rest-api-common</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <!--Temporary definition until testcontainers will have this or higher version-->
+      <!--With this trick, artifact below is not present in final jar package -->
+      <!--To be removed with https://hyland.atlassian.net/browse/AAE-23053 -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>1.26.0</version>
+        <scope>test</scope>
+      </dependency>
+      <!--End of hack-->
     </dependencies>
   </dependencyManagement>
 
