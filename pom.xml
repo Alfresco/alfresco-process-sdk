@@ -108,7 +108,7 @@
     <alfresco-deployment-service.version>7.18.0-alpha.101</alfresco-deployment-service.version>
     <alfresco-modeling-service.version>7.18.0-alpha.101</alfresco-modeling-service.version>
     <alfresco-process.version>7.18.0-alpha.50</alfresco-process.version>
-    <activiti-cloud.version>8.6.0-alpha.10</activiti-cloud.version>
+    <activiti-cloud.version>8.6.0-alpha.11</activiti-cloud.version>
   </properties>
   <repositories>
     <repository>
