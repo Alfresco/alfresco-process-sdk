@@ -66,6 +66,16 @@
         <artifactId>alfresco-java-rest-api-common</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <!--Temporary definition until testcontainers will have this or higher version-->
+      <!--With this trick, artifact below is not present in final jar package -->
+      <!--To be removed with https://hyland.atlassian.net/browse/AAE-23053 -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>1.26.0</version>
+        <scope>test</scope>
+      </dependency>
+      <!--End of hack-->
     </dependencies>
   </dependencyManagement>
 
@@ -95,10 +105,10 @@
     <swagger-core.version>1.6.14</swagger-core.version>
     <license-maven-plugin.version>4.5</license-maven-plugin.version>
     <third-party-license-maven-plugin.version>2.0.1.alfresco-2</third-party-license-maven-plugin.version>
-    <alfresco-deployment-service.version>7.18.0-alpha.87</alfresco-deployment-service.version>
-    <alfresco-modeling-service.version>7.18.0-alpha.87</alfresco-modeling-service.version>
-    <alfresco-process.version>7.18.0-alpha.40</alfresco-process.version>
-    <activiti-cloud.version>8.6.0-alpha.8</activiti-cloud.version>
+    <alfresco-deployment-service.version>7.18.0-alpha.106</alfresco-deployment-service.version>
+    <alfresco-modeling-service.version>7.18.0-alpha.106</alfresco-modeling-service.version>
+    <alfresco-process.version>7.18.0-alpha.54</alfresco-process.version>
+    <activiti-cloud.version>8.6.0-alpha.11</activiti-cloud.version>
   </properties>
   <repositories>
     <repository>

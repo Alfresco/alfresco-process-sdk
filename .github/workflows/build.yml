@@ -32,15 +32,15 @@ jobs:
   pre-checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Check dependabot build
         uses: Activiti/Activiti/.github/actions/check-ext-build@d50dea0ec2f4b06b26a8018e5b9083fbced01ed5 # 8.5.0
       - name: pre-commit
-        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@0502f171476b8af38e82ce87e5fba45ecd9b17d1 # v5.28.1
+        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@7c08513b5d33b682ac518b369e5e7b8454f2fd96 # v5.29.3
         with:
           skip_checkout: true
       - name: Ensure SHA pinned actions
-        uses: zgosalvez/github-actions-ensure-sha-pinned-actions@76d1d8e0b075d7190b5d59b86da91c7bdbcc99b2 # v3.0.7
+        uses: zgosalvez/github-actions-ensure-sha-pinned-actions@74606c30450304eee8660aae751818321754feb1 # v3.0.9
 
   build:
     runs-on: ubuntu-latest
@@ -49,7 +49,7 @@ jobs:
     outputs:
       version: ${{ steps.build-and-tag.outputs.version }}
     steps:
-      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@0502f171476b8af38e82ce87e5fba45ecd9b17d1 # v5.28.1
+      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@7c08513b5d33b682ac518b369e5e7b8454f2fd96 # v5.29.3
         id: build-and-tag
         with:
           upload-jars: 'true'
@@ -72,9 +72,9 @@ jobs:
       VERSION: ${{ needs.build.outputs.version }}
       DEVELOPMENT_BRANCH: ${{ github.ref_name }}
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
-      - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@0502f171476b8af38e82ce87e5fba45ecd9b17d1 # v5.28.1
-      - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@0502f171476b8af38e82ce87e5fba45ecd9b17d1 # v5.28.1
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@7c08513b5d33b682ac518b369e5e7b8454f2fd96 # v5.29.3
+      - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@7c08513b5d33b682ac518b369e5e7b8454f2fd96 # v5.29.3
         with:
           version: ${{ needs.build.outputs.version }}
           auto-merge: 'true'
@@ -91,7 +91,7 @@ jobs:
     if: always() && failure() && github.event_name == 'push'
     steps:
       - name: Slack Notification
-        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@0502f171476b8af38e82ce87e5fba45ecd9b17d1 # v5.28.1
+        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@7c08513b5d33b682ac518b369e5e7b8454f2fd96 # v5.29.3
         with:
           channel-id: 'eng-hxp-studio-be-gh-notifs'
           token: ${{ secrets.SLACK_NOTIFICATION_BOT_TOKEN }}
