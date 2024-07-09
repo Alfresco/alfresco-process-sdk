@@ -7,7 +7,7 @@
   <parent>
     <artifactId>alfresco-apa-java-rest-api</artifactId>
     <groupId>org.alfresco</groupId>
-    <version>7.18.0-SNAPSHOT</version>
+    <version>7.19.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>alfresco-apa-java-rest-api-lib</artifactId>
@@ -22,7 +22,7 @@
     <swagger-core.version>1.6.14</swagger-core.version>
     <swagger-core-v3-version>2.2.22</swagger-core-v3-version>
     <swagger-codegen-maven-plugin.groupId>io.swagger.codegen.v3</swagger-codegen-maven-plugin.groupId>
-    <swagger-codegen-maven-plugin.version>3.0.57</swagger-codegen-maven-plugin.version>
+    <swagger-codegen-maven-plugin.version>3.0.58</swagger-codegen-maven-plugin.version>
     <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
   </properties>
   <modules>
