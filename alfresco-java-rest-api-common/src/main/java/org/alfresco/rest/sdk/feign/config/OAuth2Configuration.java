@@ -16,14 +16,15 @@
 
 package org.alfresco.rest.sdk.feign.config;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.alfresco.rest.sdk.feign.oauth2.OAuth2FeignRequestInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
-import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientPropertiesRegistrationAdapter;
+
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,7 +63,22 @@ public class OAuth2Configuration {
     @Bean
     @ConditionalOnMissingBean({ClientRegistrationRepository.class})
     public InMemoryClientRegistrationRepository clientRegistrationRepository(OAuth2ClientProperties properties) {
-        List<ClientRegistration> registrations = new ArrayList(OAuth2ClientPropertiesRegistrationAdapter.getClientRegistrations(properties).values());
+        List<ClientRegistration> registrations = properties.getRegistration().values().stream()
+            .map(registration -> ClientRegistration.withRegistrationId(registration.getRegistrationId())
+                .clientId(registration.getClientId())
+                .clientSecret(registration.getClientSecret())
+                .clientAuthenticationMethod(registration.getClientAuthenticationMethod())
+                .authorizationGrantType(registration.getAuthorizationGrantType())
+                .redirectUri(registration.getRedirectUri())
+                .scope(registration.getScope())
+                .authorizationUri(registration.getProvider().getAuthorizationUri())
+                .tokenUri(registration.getProviderDetails().getTokenUri())
+                .userInfoUri(registration.getProviderDetails().getUserInfoUri())
+                .userNameAttributeName(registration.getProviderDetails().getUserNameAttributeName())
+                .jwkSetUri(registration.getProviderDetails().getJwkSetUri())
+                .clientName(registration.getClientName())
+                .build())
+            .collect(Collectors.toList());
         return new InMemoryClientRegistrationRepository(registrations);
     }
 
