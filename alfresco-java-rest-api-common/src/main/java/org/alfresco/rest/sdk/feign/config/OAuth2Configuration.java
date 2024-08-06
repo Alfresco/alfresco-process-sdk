@@ -16,6 +16,7 @@
 
 package org.alfresco.rest.sdk.feign.config;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,8 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 
 /**
  * Configuration for OAuth2 authentication flows. It configures a {@link OAuth2FeignRequestInterceptor} that retrieves the access token and generates the
@@ -63,22 +66,30 @@ public class OAuth2Configuration {
     @Bean
     @ConditionalOnMissingBean({ClientRegistrationRepository.class})
     public InMemoryClientRegistrationRepository clientRegistrationRepository(OAuth2ClientProperties properties) {
-        List<ClientRegistration> registrations = properties.getRegistration().values().stream()
-            .map(registration -> ClientRegistration.withRegistrationId(registration.getRegistrationId())
+        List<ClientRegistration> registrationList = properties.getRegistration().values().stream()
+            .map(registration -> ClientRegistration.withRegistrationId(OAUTH2_CLIENT_REGISTRATION_ID)
                 .clientId(registration.getClientId())
                 .clientSecret(registration.getClientSecret())
-                .clientAuthenticationMethod(registration.getClientAuthenticationMethod())
-                .authorizationGrantType(registration.getAuthorizationGrantType())
+                .clientAuthenticationMethod(new ClientAuthenticationMethod(registration.getClientAuthenticationMethod()))
+                .authorizationGrantType(new AuthorizationGrantType(registration.getAuthorizationGrantType()))
                 .redirectUri(registration.getRedirectUri())
-                .scope(registration.getScope())
-                .authorizationUri(registration.getProvider().getAuthorizationUri())
-                .tokenUri(registration.getProviderDetails().getTokenUri())
-                .userInfoUri(registration.getProviderDetails().getUserInfoUri())
-                .userNameAttributeName(registration.getProviderDetails().getUserNameAttributeName())
-                .jwkSetUri(registration.getProviderDetails().getJwkSetUri())
+                .scope(registration.getScope().toArray(new String[0]))
                 .clientName(registration.getClientName())
                 .build())
             .collect(Collectors.toList());
+
+        List<ClientRegistration> providerList = properties.getProvider().values().stream()
+            .map(provider -> ClientRegistration.withRegistrationId(OAUTH2_CLIENT_REGISTRATION_ID)
+                .authorizationUri(provider.getAuthorizationUri())
+                .tokenUri(provider.getTokenUri())
+                .userInfoUri(provider.getUserInfoUri())
+                .jwkSetUri(provider.getJwkSetUri())
+                .build())
+            .collect(Collectors.toList());
+
+        List<ClientRegistration> registrations = new ArrayList<>();
+        registrations.addAll(registrationList);
+        registrations.addAll(providerList);
         return new InMemoryClientRegistrationRepository(registrations);
     }
 
