@@ -184,7 +184,6 @@
                     </artifactItem>
                   </artifactItems>
                   <outputDirectory>${project.build.directory}</outputDirectory>
-                  <stripVersion>true</stripVersion>
                 </configuration>
               </execution>
             </executions>
@@ -214,7 +213,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-process-dmn-simulation-spring-boot-starter-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-process-dmn-simulation-spring-boot-starter-${alfresco-process.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-dmn-simulation-rest-api</output>
                   <artifactId>alfresco-activiti-dmn-simulation-rest-api</artifactId>
                   <configOptions>
@@ -230,7 +229,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-process-script-simulation-spring-boot-starter-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-process-script-simulation-spring-boot-starter-${alfresco-process.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-script-modeling-rest-api</output>
                   <artifactId>alfresco-activiti-script-modeling-rest-api</artifactId>
                   <configOptions>
@@ -246,7 +245,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-deployment-service-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-deployment-service-${alfresco-deployment-service.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-deployment-rest-api</output>
                   <artifactId>alfresco-activiti-deployment-rest-api</artifactId>
                   <configOptions>
@@ -262,7 +261,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-process-preference-spring-boot-starter-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-process-preference-spring-boot-starter-${alfresco-process.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-admin-preference-rest-api</output>
                   <artifactId>alfresco-activiti-admin-preference-rest-api</artifactId>
                   <configOptions>
@@ -278,7 +277,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-starter-modeling-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-starter-modeling-${alfresco-modeling-service.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-modeling-rest-api</output>
                   <artifactId>alfresco-activiti-modeling-rest-api</artifactId>
                   <configOptions>
@@ -294,7 +293,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-process-preference-spring-boot-starter-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-process-preference-spring-boot-starter-${alfresco-process.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-preference-rest-api</output>
                   <artifactId>alfresco-activiti-preference-rest-api</artifactId>
                   <configOptions>
@@ -310,7 +309,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-process-form-spring-boot-starter-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-process-form-spring-boot-starter-${alfresco-process.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-form-rest-api</output>
                   <artifactId>alfresco-activiti-form-rest-api</artifactId>
                   <configOptions>
@@ -326,7 +325,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-process-query-service-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-process-query-service-${alfresco-process.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-query-rest-api</output>
                   <artifactId>alfresco-activiti-query-rest-api</artifactId>
                   <configOptions>
@@ -342,7 +341,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/activiti-cloud-starter-audit-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/activiti-cloud-starter-audit-${activiti-cloud.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-audit-rest-api</output>
                   <artifactId>alfresco-activiti-audit-rest-api</artifactId>
                   <configOptions>
@@ -358,7 +357,7 @@
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <inputSpec>${project.build.directory}/alfresco-process-runtime-bundle-service-api-docs.json</inputSpec>
+                  <inputSpec>${project.build.directory}/alfresco-process-runtime-bundle-service-${alfresco-process.version}-api-docs.json</inputSpec>
                   <output>${project.build.generatedSourceDirectory}/alfresco-activiti-runtime-rest-api</output>
                   <artifactId>alfresco-activiti-runtime-rest-api</artifactId>
                   <configOptions>
