@@ -184,6 +184,7 @@
                     </artifactItem>
                   </artifactItems>
                   <outputDirectory>${project.build.directory}</outputDirectory>
+                  <useBaseVersion>true</useBaseVersion>
                 </configuration>
               </execution>
             </executions>
