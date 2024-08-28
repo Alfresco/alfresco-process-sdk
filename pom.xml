@@ -10,7 +10,7 @@
   </parent>
   <groupId>org.alfresco</groupId>
   <artifactId>alfresco-process-sdk</artifactId>
-  <version>7.19.0-SNAPSHOT</version>
+  <version>7.19.0-alpha.208</version>
   <packaging>pom</packaging>
   <name>Alfresco :: Process SDK :: Parent</name>
   <description>Parent for Alfresco Process SDK</description>
