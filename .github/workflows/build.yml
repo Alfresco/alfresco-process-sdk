@@ -36,7 +36,7 @@ jobs:
       - name: Check dependabot build
         uses: Activiti/Activiti/.github/actions/check-ext-build@7700f0283a9ff5181581a350d2520e55c61c1c60 # 8.6.0
       - name: pre-commit
-        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@209bb4275688720e13dc0703dbd17826bf677c5c # v6.1.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@a4013b7dfd8453ee94ec5d4eb8cb51d74654f770 # v7.0.0
         with:
           skip_checkout: true
       - name: Ensure SHA pinned actions
@@ -49,7 +49,7 @@ jobs:
     outputs:
       version: ${{ steps.build-and-tag.outputs.version }}
     steps:
-      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@209bb4275688720e13dc0703dbd17826bf677c5c # v6.1.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@a4013b7dfd8453ee94ec5d4eb8cb51d74654f770 # v7.0.0
         id: build-and-tag
         with:
           upload-jars: 'true'
@@ -73,8 +73,8 @@ jobs:
       DEVELOPMENT_BRANCH: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-      - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@209bb4275688720e13dc0703dbd17826bf677c5c # v6.1.0
-      - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@209bb4275688720e13dc0703dbd17826bf677c5c # v6.1.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/setup-helm-docs@a4013b7dfd8453ee94ec5d4eb8cb51d74654f770 # v7.0.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/jx-updatebot-pr@a4013b7dfd8453ee94ec5d4eb8cb51d74654f770 # v7.0.0
         with:
           version: ${{ needs.build.outputs.version }}
           auto-merge: 'true'
@@ -91,7 +91,7 @@ jobs:
     if: always() && failure() && github.event_name == 'push'
     steps:
       - name: Slack Notification
-        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@209bb4275688720e13dc0703dbd17826bf677c5c # v6.1.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/send-slack-notification@a4013b7dfd8453ee94ec5d4eb8cb51d74654f770 # v7.0.0
         with:
           channel-id: 'eng-hxp-studio-be-gh-notifs'
           token: ${{ secrets.SLACK_NOTIFICATION_BOT_TOKEN }}
