@@ -7,12 +7,12 @@
   <parent>
     <groupId>org.alfresco</groupId>
     <artifactId>alfresco-process-sdk</artifactId>
-    <version>7.19.0-SNAPSHOT</version>
+    <version>7.19.0-alpha.275</version>
   </parent>
 
   <groupId>org.alfresco</groupId>
   <artifactId>alfresco-process-sdk-samples</artifactId>
-  <version>7.19.0-SNAPSHOT</version>
+  <version>7.19.0-alpha.275</version>
   <packaging>pom</packaging>
   <name>Alfresco :: Process SDK :: Samples</name>
   <description>Sample application using the Process SDK</description>
