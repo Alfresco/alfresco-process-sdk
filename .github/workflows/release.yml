@@ -71,6 +71,10 @@ jobs:
 
       - name: Build and verify code
         run: mvn clean verify
+        env:
+          MAVEN_CLI_OPTS: -Dlogging.root.level=off -Dspring.main.banner-mode=off -Ddocker.skip
+          MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
 
       - name: Commit Changes
         uses: Alfresco/alfresco-build-tools/.github/actions/git-commit-changes@9d00215f539f669b41c7fabf7b88ccc8f316926c # v6.0.1
