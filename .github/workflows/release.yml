@@ -94,4 +94,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
           VERSION: ${{ github.event.inputs.tag-name }}
         run: |
-          gh release create ${VERSION} --title ${VERSION} --notes "Release ${VERSION}" --target ${VERSION}
+          gh release create ${VERSION} --title ${VERSION} --notes "Release ${VERSION}" --target ${{ github.sha }}
