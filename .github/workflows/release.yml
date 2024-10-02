@@ -65,6 +65,8 @@ jobs:
           mvn versions:set -DnewVersion=${{ github.event.inputs.tag-name }}
 
       - name: Commit Changes
+        env:
+          VERSION: ${{ github.event.inputs.tag-name }}
         uses: Alfresco/alfresco-build-tools/.github/actions/git-commit-changes@9d00215f539f669b41c7fabf7b88ccc8f316926c # v6.0.1
         with:
           username: ${{ secrets.BOT_GITHUB_USERNAME }}
