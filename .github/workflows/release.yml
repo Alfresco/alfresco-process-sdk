@@ -40,10 +40,11 @@ jobs:
 
       - name: Update versions in pom.xml
         run: |
-          sed -i 's/<alfresco-deployment-service.version>.*<\/alfresco-deployment-service.version>/<alfresco-deployment-service.version>${{ github.event.inputs.alfresco-deployment-service-version }}<\/alfresco-deployment-service.version>/' pom.xml
-          sed -i 's/<alfresco-modeling-service.version>.*<\/alfresco-modeling-service.version>/<alfresco-modeling-service.version>${{ github.event.inputs.alfresco-modeling-service-version }}<\/alfresco-modeling-service.version>/' pom.xml
-          sed -i 's/<alfresco-process.version>.*<\/alfresco-process.version>/<alfresco-process.version>${{ github.event.inputs.alfresco-process-version }}<\/alfresco-process.version>/' pom.xml
-          sed -i 's/<activiti-cloud.version>.*<\/activiti-cloud.version>/<activiti-cloud.version>${{ github.event.inputs.activiti-cloud-version }}<\/activiti-cloud.version>/' pom.xml
+          mvn versions:set-property -Dproperty=alfresco-deployment-service.version -DnewVersion=${{ github.event.inputs.alfresco-deployment-service-version }}
+          mvn versions:set-property -Dproperty=alfresco-modeling-service.version -DnewVersion=${{ github.event.inputs.alfresco-modeling-service-version }}
+          mvn versions:set-property -Dproperty=alfresco-process.version -DnewVersion=${{ github.event.inputs.alfresco-process-version }}
+          mvn versions:set-property -Dproperty=activiti-cloud.version -DnewVersion=${{ github.event.inputs.activiti-cloud-version }}
+          mvn versions:set -DnewVersion=${{ github.event.inputs.tag-name }}
 
       - name: Build and verify code
         run: mvn clean verify
