@@ -58,6 +58,7 @@ jobs:
 
       - name: Update versions in pom.xml
         run: |
+          git status
           mvn versions:set-property -Dproperty=alfresco-deployment-service.version -DnewVersion=${{ github.event.inputs.alfresco-deployment-service-version }}
           mvn versions:set-property -Dproperty=alfresco-modeling-service.version -DnewVersion=${{ github.event.inputs.alfresco-modeling-service-version }}
           mvn versions:set-property -Dproperty=alfresco-process.version -DnewVersion=${{ github.event.inputs.alfresco-process-version }}
