@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.alfresco</groupId>
     <artifactId>alfresco-process-sdk</artifactId>
-    <version>v7.19.0-another-test</version>
+    <version>v7.19.0-check</version>
   </parent>
 
   <artifactId>alfresco-java-rest-api-common</artifactId>

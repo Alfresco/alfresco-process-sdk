@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.alfresco</groupId>
     <artifactId>alfresco-apa-java-rest-api-lib</artifactId>
-    <version>v7.19.0-another-test</version>
+    <version>v7.19.0-check</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <artifactId>alfresco-activiti-deployment-rest-api</artifactId>

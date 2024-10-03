@@ -7,7 +7,7 @@
   <parent>
     <artifactId>alfresco-apa-java-rest-api</artifactId>
     <groupId>org.alfresco</groupId>
-    <version>v7.19.0-another-test</version>
+    <version>v7.19.0-check</version>
   </parent>
 
   <artifactId>alfresco-apa-java-rest-api-lib</artifactId>
