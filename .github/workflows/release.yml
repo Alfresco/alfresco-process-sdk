@@ -73,6 +73,12 @@ jobs:
           commit-message: "Release ${VERSION}"
           add-options: "."
 
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ inputs.token }}
+        shell: bash
+        run: git push origin
+
       - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@209bb4275688720e13dc0703dbd17826bf677c5c # v6.1.0
         id: build-and-tag
         with:
