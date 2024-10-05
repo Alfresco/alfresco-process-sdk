@@ -92,6 +92,7 @@ jobs:
 
       - name: Push changes after the build
         run: |
+          git pull origin main
           git push origin release/${{ github.event.inputs.tag-name }}
 
       - name: Create Pull Request
