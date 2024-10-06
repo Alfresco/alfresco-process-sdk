@@ -61,6 +61,7 @@ jobs:
       - name: Create new release branch
         run: |
           git checkout -b release/${{ github.event.inputs.tag-name }}
+          git branch -M release/${{ github.event.inputs.tag-name }}
 
       - name: Update versions in pom.xml
         run: |
