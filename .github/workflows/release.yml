@@ -80,20 +80,7 @@ jobs:
           commit-message: "Release ${VERSION}"
           add-options: "."
 
-      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@209bb4275688720e13dc0703dbd17826bf677c5c # v6.1.0
-        id: build-and-tag
-        with:
-          extra-maven-opts: -T 1C -DunitTests.parallel=true
-          maven-username: ${{ secrets.NEXUS_USERNAME }}
-          maven-password: ${{ secrets.NEXUS_PASSWORD }}
-          quay-username: ${{ secrets.QUAY_USERNAME }}
-          quay-password: ${{ secrets.QUAY_PASSWORD }}
-          docker-username: ${{ secrets.DOCKER_USERNAME }}
-          docker-password: ${{ secrets.DOCKER_PASSWORD }}
-          git-username: ${{ secrets.BOT_GITHUB_USERNAME }}
-          java-version: '21'
-
-      - name: Push changes after the build
+      - name: Push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
