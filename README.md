@@ -403,3 +403,10 @@ Requires the following secrets to be set:
 | QUAY_USERNAME                | Quay.io docker registry username   |
 | QUAY_PASSWORD                | Quay.io docker registry password   |
 | SLACK_NOTIFICATION_BOT_TOKEN | Token to notify slack on failure   |
+
+
+## Release process
+
+The release process is partially automated using the [release workflow](.github/workflows/release.yml).
+This workflow creates a release branch, updates the version in the `pom.xml` files, and creates a PR for the release branch.
+When the PR is merged, the release is automatically published to the internal Maven repository.
