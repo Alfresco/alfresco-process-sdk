@@ -80,6 +80,10 @@ jobs:
           commit-message: "Release ${VERSION}"
           add-options: "."
 
+      - name: Create GitHub tag
+        run: |
+          git tag ${{ github.event.inputs.tag-name }}
+
       - name: Push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
