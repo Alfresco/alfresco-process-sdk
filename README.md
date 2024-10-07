@@ -404,7 +404,6 @@ Requires the following secrets to be set:
 | QUAY_PASSWORD                | Quay.io docker registry password   |
 | SLACK_NOTIFICATION_BOT_TOKEN | Token to notify slack on failure   |
 
-
 ## Release process
 
 The release process is partially automated using the [release workflow](.github/workflows/release.yml).
