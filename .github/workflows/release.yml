@@ -48,7 +48,7 @@ jobs:
       - name: Ensure SHA pinned actions
         uses: zgosalvez/github-actions-ensure-sha-pinned-actions@b8f9a25a51fe633d9215ac7734854dc11cd299cb # v3.0.13
 
-  build-and-deploy:
+  set-versions-and-create-release-branch:
     runs-on: ubuntu-latest
     needs:
       - pre-checks
@@ -83,6 +83,7 @@ jobs:
       - name: Create GitHub tag
         run: |
           git tag ${{ github.event.inputs.tag-name }}
+          git push origin ${{ github.event.inputs.tag-name }}
 
       - name: Push changes
         env:
