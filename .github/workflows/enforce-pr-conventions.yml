@@ -21,4 +21,4 @@ jobs:
         with:
           jira-project-key: AAE|HXOR
           whitelist-branches: |-
-            release-*
+            release/*
