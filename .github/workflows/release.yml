@@ -6,19 +6,19 @@ on:
       alfresco-deployment-service-version:
         description: 'Version for alfresco-deployment-service'
         required: true
-        default: '7.19.0-alpha.179'
+        default: '7.19.0-alpha.190'
       alfresco-modeling-service-version:
         description: 'Version for alfresco-modeling-service'
         required: true
-        default: '7.19.0-alpha.179'
+        default: '7.19.0-alpha.190'
       alfresco-process-version:
         description: 'Version for alfresco-process'
         required: true
-        default: '7.19.0-alpha.93'
+        default: '7.19.0-alpha.102'
       activiti-cloud-version:
         description: 'Version for activiti-cloud'
         required: true
-        default: '8.7.0-alpha.37'
+        default: '8.7.0-alpha.43'
       tag-name:
         description: 'Tag name for the release'
         required: true
