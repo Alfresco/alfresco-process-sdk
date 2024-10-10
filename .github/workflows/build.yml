@@ -73,8 +73,7 @@ jobs:
       - name: Extract version from branch name
         id: extract_version
         run: |
-          BRANCH_NAME=${GITHUB_REF#refs/heads/}
-          VERSION=$(echo $BRANCH_NAME | sed 's/release\///')
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
           echo "::set-output name=version::$VERSION"
 
