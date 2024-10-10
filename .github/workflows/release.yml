@@ -65,11 +65,11 @@ jobs:
 
       - name: Update versions in pom.xml
         run: |
-          mvn versions:set-property -Dproperty=alfresco-deployment-service.version -DnewVersion=${{ github.event.inputs.alfresco-deployment-service-version }}
-          mvn versions:set-property -Dproperty=alfresco-modeling-service.version -DnewVersion=${{ github.event.inputs.alfresco-modeling-service-version }}
-          mvn versions:set-property -Dproperty=alfresco-process.version -DnewVersion=${{ github.event.inputs.alfresco-process-version }}
-          mvn versions:set-property -Dproperty=activiti-cloud.version -DnewVersion=${{ github.event.inputs.activiti-cloud-version }}
-          mvn versions:set -DnewVersion=${{ github.event.inputs.tag-name }}
+          mvn versions:set-property -Dproperty=alfresco-deployment-service.version -DnewVersion=${{ github.event.inputs.alfresco-deployment-service-version }} -DgenerateBackupPoms=false
+          mvn versions:set-property -Dproperty=alfresco-modeling-service.version -DnewVersion=${{ github.event.inputs.alfresco-modeling-service-version }} -DgenerateBackupPoms=false
+          mvn versions:set-property -Dproperty=alfresco-process.version -DnewVersion=${{ github.event.inputs.alfresco-process-version }} -DgenerateBackupPoms=false
+          mvn versions:set-property -Dproperty=activiti-cloud.version -DnewVersion=${{ github.event.inputs.activiti-cloud-version }} -DgenerateBackupPoms=false
+          mvn versions:set -DnewVersion=${{ github.event.inputs.tag-name }} -DgenerateBackupPoms=false
 
       - name: Commit Changes
         env:
