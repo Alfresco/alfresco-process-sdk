@@ -5,7 +5,7 @@
   <parent>
     <artifactId>alfresco-process-sdk</artifactId>
     <groupId>org.alfresco</groupId>
-    <version>7.19.0-SNAPSHOT</version>
+    <version>v7.20.0-mock</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <packaging>pom</packaging>
