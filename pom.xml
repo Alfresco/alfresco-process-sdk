@@ -10,7 +10,7 @@
   </parent>
   <groupId>org.alfresco</groupId>
   <artifactId>alfresco-process-sdk</artifactId>
-  <version>7.19.0-rc.140</version>
+  <version>v7.19</version>
   <packaging>pom</packaging>
   <name>Alfresco :: Process SDK :: Parent</name>
   <description>Parent for Alfresco Process SDK</description>
@@ -105,10 +105,10 @@
     <swagger-core.version>1.6.14</swagger-core.version>
     <license-maven-plugin.version>4.5</license-maven-plugin.version>
     <third-party-license-maven-plugin.version>2.0.1.alfresco-2</third-party-license-maven-plugin.version>
-    <alfresco-deployment-service.version>7.19.0-alpha.219</alfresco-deployment-service.version>
-    <alfresco-modeling-service.version>7.19.0-alpha.219</alfresco-modeling-service.version>
-    <alfresco-process.version>7.19.0-alpha.118</alfresco-process.version>
-    <activiti-cloud.version>8.7.0-alpha.50</activiti-cloud.version>
+    <alfresco-deployment-service.version>7.19.0-alpha.190</alfresco-deployment-service.version>
+    <alfresco-modeling-service.version>7.19.0-alpha.190</alfresco-modeling-service.version>
+    <alfresco-process.version>7.19.0-alpha.102</alfresco-process.version>
+    <activiti-cloud.version>8.7.0-alpha.43</activiti-cloud.version>
   </properties>
   <repositories>
     <repository>
