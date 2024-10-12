@@ -20,5 +20,6 @@ jobs:
         uses: Alfresco/alfresco-build-tools/.github/actions/enforce-pr-conventions@209bb4275688720e13dc0703dbd17826bf677c5c # v6.1.0
         with:
           jira-project-key: AAE|HXOR
+          valid-branch-regex: ^(revert-|(improvement|fix|feature|test|tmp|release)\/(AAE|HXOR)-[0-9]+[_-]{1}[A-Za-z0-9._-]+|release\/[A-Za-z0-9]+)$
           whitelist-branches: |-
             release/*
