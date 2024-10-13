@@ -79,5 +79,3 @@ alfresco-apa-java-rest-api/alfresco-apa-java-rest-api-lib/generated/alfresco-act
 !alfresco-apa-java-rest-api/alfresco-apa-java-rest-api-lib/generated/alfresco-activiti-script-modeling-rest-api/pom.xml
 alfresco-apa-java-rest-api/alfresco-apa-java-rest-api-lib/generated/alfresco-activiti-admin-preference-rest-api/*
 !alfresco-apa-java-rest-api/alfresco-apa-java-rest-api-lib/generated/alfresco-activiti-admin-preference-rest-api/pom.xml
-
-*.pom.xml.versionsBackup

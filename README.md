@@ -408,4 +408,10 @@ Requires the following secrets to be set:
 
 The release process is partially automated using the [release workflow](.github/workflows/release.yml).
 This workflow creates a release branch, updates the version in the `pom.xml` files, and creates a PR for the release branch.
-When the PR is merged, the release is automatically published to the internal Maven repository.
+
+To create a release, follow these steps:
+
+1. Run workflow mentioned above.
+2. Add any label into generated PR to trigger check run.
+3. Merge the PR if no issues are found.
+4. Check if new github release and tag is created.

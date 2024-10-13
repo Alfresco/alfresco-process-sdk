@@ -6,19 +6,19 @@ on:
       alfresco-deployment-service-version:
         description: 'Version for alfresco-deployment-service'
         required: true
-        default: '7.19.0-alpha.179'
+        default: '7.19.0-alpha.190'
       alfresco-modeling-service-version:
         description: 'Version for alfresco-modeling-service'
         required: true
-        default: '7.19.0-alpha.179'
+        default: '7.19.0-alpha.190'
       alfresco-process-version:
         description: 'Version for alfresco-process'
         required: true
-        default: '7.19.0-alpha.93'
+        default: '7.19.0-alpha.102'
       activiti-cloud-version:
         description: 'Version for activiti-cloud'
         required: true
-        default: '8.7.0-alpha.37'
+        default: '8.7.0-alpha.43'
       tag-name:
         description: 'Tag name for the release'
         required: true
@@ -65,11 +65,11 @@ jobs:
 
       - name: Update versions in pom.xml
         run: |
-          mvn versions:set-property -Dproperty=alfresco-deployment-service.version -DnewVersion=${{ github.event.inputs.alfresco-deployment-service-version }}
-          mvn versions:set-property -Dproperty=alfresco-modeling-service.version -DnewVersion=${{ github.event.inputs.alfresco-modeling-service-version }}
-          mvn versions:set-property -Dproperty=alfresco-process.version -DnewVersion=${{ github.event.inputs.alfresco-process-version }}
-          mvn versions:set-property -Dproperty=activiti-cloud.version -DnewVersion=${{ github.event.inputs.activiti-cloud-version }}
-          mvn versions:set -DnewVersion=${{ github.event.inputs.tag-name }}
+          mvn versions:set-property -Dproperty=alfresco-deployment-service.version -DnewVersion=${{ github.event.inputs.alfresco-deployment-service-version }} -DgenerateBackupPoms=false
+          mvn versions:set-property -Dproperty=alfresco-modeling-service.version -DnewVersion=${{ github.event.inputs.alfresco-modeling-service-version }} -DgenerateBackupPoms=false
+          mvn versions:set-property -Dproperty=alfresco-process.version -DnewVersion=${{ github.event.inputs.alfresco-process-version }} -DgenerateBackupPoms=false
+          mvn versions:set-property -Dproperty=activiti-cloud.version -DnewVersion=${{ github.event.inputs.activiti-cloud-version }} -DgenerateBackupPoms=false
+          mvn versions:set -DnewVersion=${{ github.event.inputs.tag-name }} -DgenerateBackupPoms=false
 
       - name: Commit Changes
         env:
@@ -79,11 +79,6 @@ jobs:
           username: ${{ secrets.BOT_GITHUB_USERNAME }}
           commit-message: "Release ${VERSION}"
           add-options: "."
-
-      - name: Create GitHub tag
-        run: |
-          git tag ${{ github.event.inputs.tag-name }}
-          git push origin ${{ github.event.inputs.tag-name }}
 
       - name: Push changes
         env:
