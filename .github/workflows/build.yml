@@ -74,13 +74,12 @@ jobs:
         id: extract_version
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-          echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
-          echo "::set-output name=version::$VERSION"
+          echo "Project version is $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Create GitHub tag
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
-          VERSION: ${{ env.VERSION }}
         run: |
           git tag ${{ env.VERSION }}
           git push ${{ env.VERSION }}
@@ -88,7 +87,6 @@ jobs:
       - name: Create gh Release
         env:
          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
-         VERSION: ${{ env.VERSION }}
         run: |
           gh release create ${VERSION} --title ${VERSION} --notes "Release ${VERSION}"
 
