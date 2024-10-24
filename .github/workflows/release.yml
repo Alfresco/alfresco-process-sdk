@@ -42,7 +42,7 @@ jobs:
       - name: Check dependabot build
         uses: Activiti/Activiti/.github/actions/check-ext-build@7700f0283a9ff5181581a350d2520e55c61c1c60 # 8.6.0
       - name: pre-commit
-        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@c0fa39de055c31c2b9abb96fd1030260c6ed34ea # v7.2.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@019e8de660feacce28a4aa960833fd9cc9060255 # v8.0.0
         with:
           skip_checkout: true
       - name: Ensure SHA pinned actions
@@ -74,7 +74,7 @@ jobs:
       - name: Commit Changes
         env:
           VERSION: ${{ github.event.inputs.tag-name }}
-        uses: Alfresco/alfresco-build-tools/.github/actions/git-commit-changes@c0fa39de055c31c2b9abb96fd1030260c6ed34ea # v7.2.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/git-commit-changes@019e8de660feacce28a4aa960833fd9cc9060255 # v8.0.0
         with:
           username: ${{ secrets.BOT_GITHUB_USERNAME }}
           commit-message: "Release ${VERSION}"
