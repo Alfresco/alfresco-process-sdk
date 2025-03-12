@@ -49,7 +49,7 @@ jobs:
     outputs:
       version: ${{ steps.build-and-tag.outputs.version }}
     steps:
-      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@43b8dd18f509dc920089cdf54269f13a5c02022d # v8.5.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@c1236aee36bb9b35c5972819fcf8a4d07572e6cd # v8.16.0
         id: build-and-tag
         with:
           upload-jars: 'true'
