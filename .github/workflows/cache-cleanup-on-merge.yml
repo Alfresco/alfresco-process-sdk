@@ -8,6 +8,6 @@ jobs:
   cleanup:
     runs-on: ubuntu-latest
     steps:
-      - uses: Alfresco/alfresco-build-tools/.github/actions/gh-cache-cleanup-on-merge@43b8dd18f509dc920089cdf54269f13a5c02022d # v8.5.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/gh-cache-cleanup-on-merge@a3d5beb67a8b8d96398435e01686a9a9185380ab # v8.18.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
