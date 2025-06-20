@@ -36,7 +36,7 @@ jobs:
       - name: Check dependabot build
         uses: Activiti/Activiti/.github/actions/check-ext-build@7700f0283a9ff5181581a350d2520e55c61c1c60 # 8.6.0
       - name: pre-commit
-        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@5ee7dc98536d9d7dc81ba3fc2c2866f8315626a3 # v8.24.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/pre-commit@86fa01feca860df31191c605eaae854f7611b01e # v8.24.1
         with:
           skip_checkout: true
       - name: Ensure SHA pinned actions
@@ -49,7 +49,7 @@ jobs:
     outputs:
       version: ${{ steps.build-and-tag.outputs.version }}
     steps:
-      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@5ee7dc98536d9d7dc81ba3fc2c2866f8315626a3 # v8.24.0
+      - uses: Alfresco/alfresco-build-tools/.github/actions/maven-build-and-tag@86fa01feca860df31191c605eaae854f7611b01e # v8.24.1
         id: build-and-tag
         with:
           upload-jars: 'true'
@@ -99,6 +99,6 @@ jobs:
     if: always() && failure() && github.event_name == 'push'
     steps:
       - name: Teams Notification
-        uses: Alfresco/alfresco-build-tools/.github/actions/send-teams-notification@5ee7dc98536d9d7dc81ba3fc2c2866f8315626a3 # v8.24.0
+        uses: Alfresco/alfresco-build-tools/.github/actions/send-teams-notification@86fa01feca860df31191c605eaae854f7611b01e # v8.24.1
         with:
           webhook-url: ${{ secrets.TEAMS_NOTIFICATION_AUTOMATE_BACKEND_WORKFLOW_WEBHOOK }}
